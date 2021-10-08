@@ -7,7 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
+<<<<<<< Updated upstream
 #include "../../OpenGL/glview.h"
+=======
+#include "../../../../Unik/Kurchach/OpenTraffic/OpenGL/glview.h"
+>>>>>>> Stashed changes
 #include <QtGui/qtextcursor.h>
 #include <QScreen>
 #include <QtCore/qbytearray.h>
