@@ -114,18 +114,28 @@ void GLView::draw(Parser *obj,char* texture_path)
 
 void GLView::keyPressEvent(QKeyEvent *e)
 {
-    float fspeed=0,sspeed=0,angel;
+    float angel;
 
-    if(e->key() == Qt::Key_W){fspeed=10;}
+    if(e->key() == Qt::Key_W){if(fspeed<10)fspeed+=1;}
     if(e->key() == Qt::Key_S){fspeed=-10;}
-    if(e->key() == Qt::Key_A){sspeed=-1;}
-    if(e->key() == Qt::Key_D){sspeed=1;}
     if(e->key() == Qt::Key_Q){yPos-=10;}
     if(e->key() == Qt::Key_E){yPos+=10;}
-    if(fspeed!=0){
-        angel=-yRot/180*M_PI;
+    if(e->key()==Qt::Key_Space){if(fspeed>0)fspeed-=2;if(fspeed<0)fspeed+=0.5;}
+    qDebug()<<"fspeed: "<<fspeed;
+    if(fspeed!=0 ){
+        if  (!carsim)
+        { angel=-yRot/180*M_PI;
         xPos+=sin(angel)*fspeed;
         zPos+=cos(angel)*fspeed;
+        fspeed=0;
+        }
+        else
+        {
+            if(e->key() == Qt::Key_A){ycRot-=1; if(ycRot<-360)ycRot=0;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
+            if(e->key() == Qt::Key_D){ycRot+=1; if(ycRot>360)ycRot=0;}
+            qDebug()<<"ycRot "<<ycRot;
+            fspeed-=0.5;
+        }
     }
     update();
 }

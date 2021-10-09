@@ -20,12 +20,15 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
+    bool carsim=true;
+    float fspeed=0;
     float xRot=0;
     float yRot=0;
-    float zRot=-3;
+    float zRot=0;
     float xPos=0;
     float yPos=0;
     float zPos=0;
+    float ycRot=0;
     int width,height,cntr;
     unsigned int texture;
     unsigned char *data;
