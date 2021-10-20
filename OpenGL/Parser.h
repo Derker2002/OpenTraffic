@@ -1,4 +1,3 @@
-
 #ifndef PARSER_H
 #define PARSER_H
 #pragma once
@@ -29,6 +28,9 @@ public:
         //int pnum4, tnum4, nnum4;
     };
 private:
+    bool colored=true;
+    int width,height,cntr;
+    unsigned char *data;
     std::vector<point> pvect;
     std::vector<textcord> tvect;
     std::vector<normals> nvect;
@@ -43,18 +45,15 @@ private:
     FILE* mylf;
 public:
     Parser(){};
-    Parser(char* name)
-    {
-        try {
-            mylf = fopen(name, "r");
-            InitParse();
-            fclose(mylf);
-        }  catch (...) {
-            std::cout<<"wrong path way";
-        }
-    }
+    Parser(char* name,char* texture_path);
+    bool IsColored();
+    int GetWidth();
+    int GetHeight();
+    int GetCenter();
+    unsigned char* GetData();
     void ShowStat();
     void SetPath(char* file_path);
+
     std::vector<point> GetPointsPose();
     std::vector<textcord> GetTexture();
     std::vector<normals> GetNormals();

@@ -16,10 +16,10 @@ glEnable(GL_COLOR_MATERIAL);
 glEnable(GL_TEXTURE_2D);
 glEnable(GL_NORMALIZE);
 glBindTexture(GL_TEXTURE_2D,texture);
-city=new Parser("builds.obj");
-zaparik=new Parser("car.obj");
-skybox=new Parser("skybox.obj");
-mroads=new Parser("MainRoads.obj");
+city=new Parser("builds.obj","none");
+zaparik=new Parser("car.obj","avatar.png");
+skybox=new Parser("skybox.obj","skytext.png");
+mroads=new Parser("MainRoads.obj","road.png");
 timer=new QTimer();
 connect(timer,SIGNAL(timeout()),this,SLOT(tTick()));
 timer->start(5);
@@ -46,9 +46,9 @@ void GLView::paintGL(){
     moveCamera();
 
     glLightfv(GL_LIGHT0,GL_POSITION,position);
-    draw(mroads,"road.png");
-    draw(zaparik,"avatar.png");
-    draw(city,"none");
+    draw(mroads);
+    draw(zaparik);
+    draw(city);
 
 
 }
@@ -69,33 +69,31 @@ void GLView::moveCamera()
     glRotatef(yRot,0,1,0);
     glDisable(GL_LIGHTING);
     glDisable(GL_DEPTH_TEST);
-    draw(skybox,"skytext.png");
+    draw(skybox);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glTranslatef(xPos,yPos,zPos);
     qDebug()<<xPos<<" "<<yPos<<" "<<zPos;
 }
-void GLView::draw(Parser *obj,char* texture_path)
+void GLView::draw(Parser *obj)
 {
-    bool colored=true;
-    if(!strcmp(texture_path,"none")) colored=false;
+
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
      //parse->SetPath(obj_path);
    opd=obj->GetPointsPose();
     ofd=obj->GetFaces();
     ond=obj->GetNormals();
-   if(colored)
+   if(obj->IsColored())
    {
        otd=obj->GetTexture();
        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-       data = stbi_load(texture_path, &width, &height, &cntr, 0);
        glGenTextures(1,&texture);
            glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_REPEAT);
            glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_REPEAT);
            glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
            glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-           glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,width,height,0,GL_RGBA,GL_UNSIGNED_BYTE,data);
+           glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,obj->GetWidth(),obj->GetHeight(),0,GL_RGBA,GL_UNSIGNED_BYTE,obj->GetData());
            glTexCoordPointer(2,GL_FLOAT,0,texpose);
    }
     glVertexPointer(3,GL_FLOAT,0,pointpose);
@@ -121,7 +119,7 @@ void GLView::draw(Parser *obj,char* texture_path)
         normals[6]=ond[ofd[i].nnum3].x;
         normals[7]=ond[ofd[i].nnum3].y;
         normals[8]=ond[ofd[i].nnum3].z;
-        if(colored)
+        if(obj->IsColored())
         {
         texpose[0]=otd[ofd[i].tnum].x;
         texpose[1]=-otd[ofd[i].tnum].y;
@@ -134,7 +132,7 @@ void GLView::draw(Parser *obj,char* texture_path)
     }
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
-    if(colored)
+    if(obj->IsColored())
     {
         glBindTexture(GL_TEXTURE_2D,0);
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -151,6 +149,8 @@ void GLView::keyPressEvent(QKeyEvent *e)
     if(e->key() == Qt::Key_S){if(fspeed>-2)fspeed-=0.2;}
     if(e->key() == Qt::Key_Q){yPos-=10;}
     if(e->key() == Qt::Key_E){yPos+=10;}
+    if(e->key() == Qt::Key_A){if(fspeed<4)sspeed+=0.2;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
+    if(e->key() == Qt::Key_D){if(fspeed>-4)fspeed-=0.2;}
 
     if (carsim){
         if(e->key() == Qt::Key_A){ycRot-=1; if(ycRot<-360)ycRot=0;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
@@ -175,8 +175,8 @@ void GLView::tTick()
         zPos+=cos(angel)*fspeed*0.18;
         }
 
-        if(fspeed>0){fspeed-=0.05;}
-        else fspeed+=0.05;
+        if(fspeed>0){fspeed-=0.05; sspeed-=0.1;}
+        else {fspeed+=0.05;sspeed+=0.1;}
 
     }
     update();

@@ -1,5 +1,6 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include "parser.h"
-
+#include "stb_image.h"
 void Parser::ShowStat()
 {
 
@@ -128,3 +129,19 @@ void Parser::InitParse()
     }
 
 }
+Parser::Parser(char* name,char* texture_path){
+    if(!strcmp(texture_path,"none")) colored=false;
+    if(colored) data = stbi_load(texture_path, &width, &height, &cntr, 0);
+    try {
+        mylf = fopen(name, "r");
+        InitParse();
+        fclose(mylf);
+    }  catch (...) {
+        std::cout<<"wrong path way";
+    }
+}
+int Parser::GetCenter(){return cntr;}
+int Parser::GetWidth(){return width;}
+int Parser::GetHeight(){return height;}
+unsigned char* Parser::GetData(){return data;}
+bool Parser::IsColored(){return colored;}

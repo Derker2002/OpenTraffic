@@ -1,6 +1,5 @@
 #ifndef GLVIEW_H
 #define GLVIEW_H
-#define STB_IMAGE_IMPLEMENTATION
 #include <iostream>
 #include <QTimer>
 #include <QWidget>
@@ -20,9 +19,8 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
-
     bool carsim=false;
-    float fspeed=0;
+    float fspeed=0,sspeed=0;
     float xRot=0;
     float yRot=0;
     float zRot=0;
@@ -30,9 +28,7 @@ private:
     float yPos=0;
     float zPos=0;
     float ycRot=0;
-    int width,height,cntr;
     unsigned int texture;
-    unsigned char *data;
     float pointpose[9];
     float texpose[6];
     float normals[9];
@@ -47,7 +43,7 @@ private:
     Parser *city,*zaparik,*skybox,*mroads;
     QTimer *timer;
 
-    void draw(Parser *obj,char* texture_path);
+    void draw(Parser *obj);
     void moveCamera();
     void moveCar();
     void setLight();
