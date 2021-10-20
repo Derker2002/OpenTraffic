@@ -5,7 +5,7 @@ GLView::GLView(QWidget *parent)
     : QOpenGLWidget(parent)
 
 {
-    connect(&timer,SIGNAL(timeout()),SLOT(changeZ()));
+    connect(&timer,SIGNAL(timeout()),SLOT(tTime()));
     timer.start(100);
 }
 
@@ -116,18 +116,18 @@ void GLView::keyPressEvent(QKeyEvent *e)
 {
     float angel;
 
-    if(e->key() == Qt::Key_W){if(fspeed<10)fspeed+=1;}
-    if(e->key() == Qt::Key_S){fspeed=-10;}
+    if(e->key() == Qt::Key_W){if(fspeed<maxspeed)fspeed+=0.2;}
+    if(e->key() == Qt::Key_S){if(fspeed>-2)fspeed-=0.2;}
     if(e->key() == Qt::Key_Q){yPos-=10;}
     if(e->key() == Qt::Key_E){yPos+=10;}
-    if(e->key()==Qt::Key_Space){if(fspeed>0)fspeed-=2;if(fspeed<0)fspeed+=0.5;}
+    if(e->key()==Qt::Key_Space){if(fspeed>0)fspeed-=0.5;if(fspeed<0)fspeed+=0.5;}
     qDebug()<<"fspeed: "<<fspeed;
     if(fspeed!=0 ){
+        xPos+=sin(angel)*fspeed*0.8;
+        zPos+=cos(angel)*fspeed*0.8;
         if  (!carsim)
         { angel=-yRot/180*M_PI;
-        xPos+=sin(angel)*fspeed;
-        zPos+=cos(angel)*fspeed;
-        fspeed=0;
+
         }
         else
         {
@@ -139,7 +139,11 @@ void GLView::keyPressEvent(QKeyEvent *e)
     }
     update();
 }
-
+void GLView::tTime(){
+    if(fspeed>0)fspeed-=0.05;
+    if(fspeed<0)fspeed+=0.05;
+    if(fspeed<=0.05 && fspeed>=-0.05)fspeed=0;
+}
 GLView::~GLView()
 {
     delete ui;

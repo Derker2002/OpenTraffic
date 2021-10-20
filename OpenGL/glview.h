@@ -29,6 +29,7 @@ private:
     float yPos=0;
     float zPos=0;
     float ycRot=0;
+    float maxspeed=10;
     int width,height,cntr;
     unsigned int texture;
     unsigned char *data;
@@ -58,5 +59,6 @@ public:
     void keyPressEvent(QKeyEvent*)override;
     ~GLView();
 public slots:
+    void tTime();
 };
 #endif // GLVIEW_H
