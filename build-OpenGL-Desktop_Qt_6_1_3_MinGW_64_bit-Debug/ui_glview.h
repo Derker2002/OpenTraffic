@@ -10,6 +10,7 @@
 #define UI_GLVIEW_H
 
 #include <QtCore/QVariant>
+#include <QtOpenGLWidgets/QOpenGLWidget>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QWidget>
 
@@ -18,12 +19,17 @@ QT_BEGIN_NAMESPACE
 class Ui_GLView
 {
 public:
+    QOpenGLWidget *openGLWidget;
 
     void setupUi(QWidget *GLView)
     {
         if (GLView->objectName().isEmpty())
             GLView->setObjectName(QString::fromUtf8("GLView"));
         GLView->resize(800, 600);
+        GLView->setMaximumSize(QSize(800, 600));
+        openGLWidget = new QOpenGLWidget(GLView);
+        openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
+        openGLWidget->setGeometry(QRect(0, 10, 791, 581));
 
         retranslateUi(GLView);
 

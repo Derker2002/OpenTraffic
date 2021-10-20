@@ -20,17 +20,22 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
+
+    bool carsim=false;
+    float fspeed=0;
     float xRot=0;
     float yRot=0;
-    float zRot=-3;
+    float zRot=0;
     float xPos=0;
     float yPos=0;
     float zPos=0;
+    float ycRot=0;
     int width,height,cntr;
     unsigned int texture;
     unsigned char *data;
     float pointpose[9];
     float texpose[6];
+    float normals[9];
     QPoint mPos;
 
     Ui::GLView *ui;
@@ -39,13 +44,16 @@ private:
     std::vector<Parser::textcord> otd;
     std::vector<Parser::surf> ofd;
 
-    Parser *city,*roads;
-    QTimer timer;
+    Parser *city,*zaparik,*skybox,*mroads;
+    QTimer *timer;
 
-    void draw(Parser *obj,char* texture);
+    void draw(Parser *obj,char* texture_path);
     void moveCamera();
+    void moveCar();
     void setLight();
 public:
+    int maxspeed=15;
+    float distance=10000;
     GLView(QWidget *parent = nullptr);
     void initializeGL() override;
     void resizeGL(int w, int h) override;
@@ -53,7 +61,9 @@ public:
     void mousePressEvent(QMouseEvent*)override;
     void mouseMoveEvent(QMouseEvent*)override;
     void keyPressEvent(QKeyEvent*)override;
+
     ~GLView();
 public slots:
+    void tTick();
 };
 #endif // GLVIEW_H

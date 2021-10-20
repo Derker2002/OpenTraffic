@@ -8,19 +8,6 @@ QMAKE_CXX.COMPILER_MACROS = \
     QMAKE_GCC_MINOR_VERSION \
     QMAKE_GCC_PATCH_VERSION
 QMAKE_CXX.INCDIRS = \
-<<<<<<< Updated upstream
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ \
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 \
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward \
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include \
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed \
-    D:/qt/Tools/mingw810_64/x86_64-w64-mingw32/include
-QMAKE_CXX.LIBDIRS = \
-    D:/qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0 \
-    D:/qt/Tools/mingw810_64/lib/gcc \
-    D:/qt/Tools/mingw810_64/x86_64-w64-mingw32/lib \
-    D:/qt/Tools/mingw810_64/lib
-=======
     D:/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ \
     D:/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 \
     D:/QT/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward \
@@ -32,4 +19,3 @@ QMAKE_CXX.LIBDIRS = \
     D:/QT/Tools/mingw810_64/lib/gcc \
     D:/QT/Tools/mingw810_64/x86_64-w64-mingw32/lib \
     D:/QT/Tools/mingw810_64/lib
->>>>>>> Stashed changes

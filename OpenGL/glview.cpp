@@ -5,18 +5,25 @@ GLView::GLView(QWidget *parent)
     : QOpenGLWidget(parent)
 
 {
-    connect(&timer,SIGNAL(timeout()),SLOT(changeZ()));
-    timer.start(100);
+
 }
 
 void GLView::initializeGL(){
 glEnable(GL_DEPTH_TEST);
 glEnable(GL_LIGHTING);
+glEnable(GL_LIGHT0);
 glEnable(GL_COLOR_MATERIAL);
 glEnable(GL_TEXTURE_2D);
+glEnable(GL_NORMALIZE);
 glBindTexture(GL_TEXTURE_2D,texture);
-city=new Parser("buildings.obj");
-roads=new Parser("roads2.obj");
+city=new Parser("builds.obj");
+zaparik=new Parser("car.obj");
+skybox=new Parser("skybox.obj");
+mroads=new Parser("MainRoads.obj");
+timer=new QTimer();
+connect(timer,SIGNAL(timeout()),this,SLOT(tTick()));
+timer->start(5);
+
 }
 
 void GLView::resizeGL(int w, int h){
@@ -24,21 +31,26 @@ void GLView::resizeGL(int w, int h){
     glViewport(0,0,w,h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    glFrustum(-1,1,-1,1,1,10000);
+    glFrustum(-1,1,-1,1,1,distance);
     glScalef(h/(float)w,1,1);
 
 }
 
 void GLView::paintGL(){
+    float position[]= {-500,600,-200,0};
     glClearColor(0.8,0.9,1,0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glColor3d(0.6,0.6,0);
     moveCamera();
+
+    glLightfv(GL_LIGHT0,GL_POSITION,position);
+    draw(mroads,"road.png");
+    draw(zaparik,"avatar.png");
     draw(city,"none");
-    glTranslatef(0,-5,0);
-    draw(roads,"none");
+
+
 }
 void GLView::mousePressEvent(QMouseEvent* mo){
 mPos=mo->pos();
@@ -55,6 +67,11 @@ void GLView::moveCamera()
 {
     glRotatef(xRot,1,0,0);
     glRotatef(yRot,0,1,0);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    draw(skybox,"skytext.png");
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
     glTranslatef(xPos,yPos,zPos);
     qDebug()<<xPos<<" "<<yPos<<" "<<zPos;
 }
@@ -63,9 +80,11 @@ void GLView::draw(Parser *obj,char* texture_path)
     bool colored=true;
     if(!strcmp(texture_path,"none")) colored=false;
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
      //parse->SetPath(obj_path);
    opd=obj->GetPointsPose();
     ofd=obj->GetFaces();
+    ond=obj->GetNormals();
    if(colored)
    {
        otd=obj->GetTexture();
@@ -80,6 +99,7 @@ void GLView::draw(Parser *obj,char* texture_path)
            glTexCoordPointer(2,GL_FLOAT,0,texpose);
    }
     glVertexPointer(3,GL_FLOAT,0,pointpose);
+    glNormalPointer(GL_FLOAT,0,normals);
     glColor3d(1,1,1);
     for(int i=0;i<ofd.size();i++)
     {
@@ -92,6 +112,15 @@ void GLView::draw(Parser *obj,char* texture_path)
         pointpose[6]=opd[ofd[i].pnum3].x;
         pointpose[7]=opd[ofd[i].pnum3].y;
         pointpose[8]=opd[ofd[i].pnum3].z;
+        normals[0]=ond[ofd[i].nnum].x;
+        normals[1]=ond[ofd[i].nnum].y;
+        normals[2]=ond[ofd[i].nnum].z;
+        normals[3]=ond[ofd[i].nnum2].x;
+        normals[4]=ond[ofd[i].nnum2].y;
+        normals[5]=ond[ofd[i].nnum2].z;
+        normals[6]=ond[ofd[i].nnum3].x;
+        normals[7]=ond[ofd[i].nnum3].y;
+        normals[8]=ond[ofd[i].nnum3].z;
         if(colored)
         {
         texpose[0]=otd[ofd[i].tnum].x;
@@ -104,6 +133,7 @@ void GLView::draw(Parser *obj,char* texture_path)
         glDrawArrays(GL_TRIANGLES,0,3);
     }
     glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
     if(colored)
     {
         glBindTexture(GL_TEXTURE_2D,0);
@@ -112,24 +142,45 @@ void GLView::draw(Parser *obj,char* texture_path)
     }
 }
 
+
 void GLView::keyPressEvent(QKeyEvent *e)
 {
-    float fspeed=0,sspeed=0,angel;
 
-    if(e->key() == Qt::Key_W){fspeed=10;}
-    if(e->key() == Qt::Key_S){fspeed=-10;}
-    if(e->key() == Qt::Key_A){sspeed=-1;}
-    if(e->key() == Qt::Key_D){sspeed=1;}
+
+    if(e->key() == Qt::Key_W){if(fspeed<maxspeed)fspeed+=0.2;}
+    if(e->key() == Qt::Key_S){if(fspeed>-2)fspeed-=0.2;}
     if(e->key() == Qt::Key_Q){yPos-=10;}
     if(e->key() == Qt::Key_E){yPos+=10;}
-    if(fspeed!=0){
+
+    if (carsim){
+        if(e->key() == Qt::Key_A){ycRot-=1; if(ycRot<-360)ycRot=0;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
+        if(e->key() == Qt::Key_D){ycRot+=1; if(ycRot>360)ycRot=0;}
+    }
+    qDebug()<<"fspeed: "<<fspeed;
+    update();
+}
+void GLView::moveCar()
+{
+
+}
+void GLView::tTick()
+{
+    float angel;
+    if(fspeed<=0.05 && fspeed>=-0.05)fspeed=0;
+    if(fspeed!=0 ){
+        if  (!carsim)
+        {
         angel=-yRot/180*M_PI;
-        xPos+=sin(angel)*fspeed;
-        zPos+=cos(angel)*fspeed;
+        xPos+=sin(angel)*fspeed*0.18;
+        zPos+=cos(angel)*fspeed*0.18;
+        }
+
+        if(fspeed>0){fspeed-=0.05;}
+        else fspeed+=0.05;
+
     }
     update();
 }
-
 GLView::~GLView()
 {
     delete ui;
