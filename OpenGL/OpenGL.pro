@@ -17,8 +17,7 @@ SOURCES += \
 
 HEADERS += \
     glview.h\
-    parser.h \
-    stb_image.h
+    parser.h
 
 FORMS += \
     glview.ui
