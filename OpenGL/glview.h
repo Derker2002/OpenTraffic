@@ -19,6 +19,7 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
+    std::string curpath;
     bool carsim=false;
     float fspeed=0,sspeed=0;
     float xRot=0;
@@ -28,6 +29,7 @@ private:
     float yPos=0;
     float zPos=0;
     float ycRot=0;
+    QTime pT,cT;
     unsigned int texture;
     float pointpose[9];
     float texpose[6];
@@ -47,6 +49,7 @@ private:
     void moveCamera();
     void moveCar();
     void setLight();
+    char* setPath(char* path);
 public:
     int maxspeed=15;
     float distance=10000;

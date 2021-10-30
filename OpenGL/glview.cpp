@@ -16,10 +16,11 @@ glEnable(GL_COLOR_MATERIAL);
 glEnable(GL_TEXTURE_2D);
 glEnable(GL_NORMALIZE);
 glBindTexture(GL_TEXTURE_2D,texture);
-city=new Parser("builds.obj","none");
-zaparik=new Parser("car.obj","avatar.png");
-skybox=new Parser("skybox.obj","skytext.png");
-mroads=new Parser("MainRoads.obj","road.png");
+city=new Parser(setPath("/obj/builds.obj"),"none");
+zaparik=new Parser(setPath("/obj/car.obj"),setPath("/textures/avatar.png"));
+skybox=new Parser(setPath("/obj/skybox.obj"),setPath("/textures/skytext.png"));
+mroads=new Parser(setPath("/obj/MainRoads.obj"),setPath("/textures/road.png"));
+
 timer=new QTimer();
 connect(timer,SIGNAL(timeout()),this,SLOT(tTick()));
 timer->start(5);
@@ -37,6 +38,9 @@ void GLView::resizeGL(int w, int h){
 }
 
 void GLView::paintGL(){
+    pT=QTime::currentTime();
+
+
     float position[]= {-500,600,-200,0};
     glClearColor(0.8,0.9,1,0);
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -49,14 +53,14 @@ void GLView::paintGL(){
     draw(mroads);
     draw(zaparik);
     draw(city);
-
-
+    cT=QTime::currentTime();
+    qDebug()<<(int)600/(int)(cT.msec()-pT.msec());
 }
 void GLView::mousePressEvent(QMouseEvent* mo){
 mPos=mo->pos();
 }
 void GLView::mouseMoveEvent(QMouseEvent* e){
-    qDebug()<<"Moved";
+    //qDebug()<<"Moved";
 
 xRot+=1/M_PI*(e->pos().y()-mPos.y());
 yRot+=1/M_PI*(e->pos().x()-mPos.x());
@@ -73,7 +77,7 @@ void GLView::moveCamera()
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glTranslatef(xPos,yPos,zPos);
-    qDebug()<<xPos<<" "<<yPos<<" "<<zPos;
+    //qDebug()<<xPos<<" "<<yPos<<" "<<zPos;
 }
 void GLView::draw(Parser *obj)
 {
@@ -156,12 +160,20 @@ void GLView::keyPressEvent(QKeyEvent *e)
         if(e->key() == Qt::Key_A){ycRot-=1; if(ycRot<-360)ycRot=0;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
         if(e->key() == Qt::Key_D){ycRot+=1; if(ycRot>360)ycRot=0;}
     }
-    qDebug()<<"fspeed: "<<fspeed;
+    //qDebug()<<"fspeed: "<<fspeed;
     update();
 }
 void GLView::moveCar()
 {
 
+}
+
+char *GLView::setPath(char *path)
+{
+    curpath=(QDir::currentPath()+path).toStdString();
+    char* result=new char[curpath.size()+1];
+    strcpy(result,curpath.c_str());
+    return result;
 }
 void GLView::tTick()
 {

@@ -130,6 +130,7 @@ void Parser::InitParse()
 
 }
 Parser::Parser(char* name,char* texture_path){
+
     if(!strcmp(texture_path,"none")) colored=false;
     if(colored) data = stbi_load(texture_path, &width, &height, &cntr, 0);
     try {
@@ -137,7 +138,7 @@ Parser::Parser(char* name,char* texture_path){
         InitParse();
         fclose(mylf);
     }  catch (...) {
-        std::cout<<"wrong path way";
+        qDebug()<<"wrong path way";
     }
 }
 int Parser::GetCenter(){return cntr;}

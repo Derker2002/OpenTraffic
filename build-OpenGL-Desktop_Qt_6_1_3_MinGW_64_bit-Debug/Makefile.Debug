@@ -1337,7 +1337,8 @@ debug/parser.o: ../OpenGL/parser.cpp ../OpenGL/parser.h \
 		D:/QT/6.1.3/mingw81_64/include/QtCore/qproperty.h \
 		D:/QT/6.1.3/mingw81_64/include/QtCore/qpropertyprivate.h \
 		D:/QT/6.1.3/mingw81_64/include/QtCore/QPoint \
-		D:/QT/6.1.3/mingw81_64/include/QtCore/qpoint.h
+		D:/QT/6.1.3/mingw81_64/include/QtCore/qpoint.h \
+		../OpenGL/stb_image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\parser.o ..\OpenGL\parser.cpp
 
 debug/moc_glview.o: debug/moc_glview.cpp 

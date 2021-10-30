@@ -29,7 +29,7 @@ public:
         GLView->setMaximumSize(QSize(800, 600));
         openGLWidget = new QOpenGLWidget(GLView);
         openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
-        openGLWidget->setGeometry(QRect(0, 10, 791, 581));
+        openGLWidget->setGeometry(QRect(0, 0, 801, 601));
 
         retranslateUi(GLView);
 
