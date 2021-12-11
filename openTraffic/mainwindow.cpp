@@ -77,5 +77,5 @@ void MainWindow::on_startButton_clicked()
     mg->resize(this->width(),this->height());
     mg->setWindowState(Qt::WindowFullScreen);
     mg->show();
-    this->hide();
+    this->close();
 }

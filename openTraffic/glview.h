@@ -54,7 +54,6 @@ private:
     Parser *ukraine,*zapor,*zazik,*zhd1;*/
     QTimer *timer;
     QLabel *fps;
-    bool paused = false;
     QPushButton *openPanorama;
     pauseform *pf;
     void draw(Parser *obj);

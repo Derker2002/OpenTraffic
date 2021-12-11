@@ -272,15 +272,12 @@ void GLView::keyPressEvent(QKeyEvent *e)
         }
     }
     //qDebug()<<"fspeed: "<<fspeed;
-    if (e->nativeScanCode() == 1 && !paused) {
-        paused = true;
+    if (e->nativeScanCode() == 1) {
         pf = new pauseform(this);
-        pf->resize(this->width(),this->height());
+        Qt::WindowFlags flags = pf->windowFlags();
+        pf->setWindowFlags(flags | Qt::Tool | Qt::FramelessWindowHint);
+        pf->setAttribute(Qt::WA_TranslucentBackground);
         pf->show();
-    }
-    else if (e->nativeScanCode() == 1 && paused){
-        pf->close();
-        paused = false;
     }
     update();
 }

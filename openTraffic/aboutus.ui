@@ -56,31 +56,7 @@ border-top : 3px solid rgb(24, 54, 58);
 background-color: rgb(24, 54, 58);</string>
         </property>
         <layout class="QGridLayout" name="LeadersView">
-         <item row="0" column="0" colspan="3">
-          <widget class="QLabel" name="pageLabel">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: #fff</string>
-           </property>
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ласкаво просимо до нашого додатку - openTraffic&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Цей додаток був створенний як курсова робота з ООП&lt;/p&gt;&lt;p&gt;У розробці приймали участь студенти группи КНТ-110:&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Хохлов Назар&lt;/p&gt;&lt;p&gt;Кучер Андрій&lt;/p&gt;&lt;p&gt;Лавров Богдан&lt;/p&gt;&lt;p&gt;Шепляков Георгій&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Якщо вам щось потрібно, звертайтеся за посиланням нижче!&lt;/p&gt;&lt;p&gt;Дякуємо!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="textInteractionFlags">
-            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
+         <item row="2" column="1">
           <widget class="QWidget" name="imgLinks" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -110,6 +86,33 @@ background-color: rgb(24, 54, 58);</string>
             </item>
            </layout>
           </widget>
+         </item>
+         <item row="1" column="0" colspan="3">
+          <widget class="QLabel" name="pageLabel">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: #fff</string>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ласкаво просимо до нашого додатку - openTraffic&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Цей додаток був створенний як курсова робота з ООП&lt;/p&gt;&lt;p&gt;У розробці приймали участь студенти группи КНТ-110:&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Хохлов Назар&lt;/p&gt;&lt;p&gt;Кучер Андрій&lt;/p&gt;&lt;p&gt;Лавров Богдан&lt;/p&gt;&lt;p&gt;Шепляков Георгій&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Якщо вам щось потрібно, звертайтеся за посиланням нижче!&lt;/p&gt;&lt;p&gt;Дякуємо!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="textInteractionFlags">
+            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QListView" name="listView"/>
          </item>
         </layout>
        </widget>

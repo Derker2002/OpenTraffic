@@ -410,6 +410,7 @@ border-radius: 4px;
           <pointsize>26</pointsize>
           <weight>75</weight>
           <bold>true</bold>
+          <kerning>true</kerning>
          </font>
         </property>
         <property name="styleSheet">
