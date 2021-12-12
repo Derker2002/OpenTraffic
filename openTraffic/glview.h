@@ -15,7 +15,6 @@
 #include <panoramaview.h>
 #include <QLabel>
 #include <pauseform.h>
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class GLView; }
 QT_END_NAMESPACE
@@ -24,7 +23,10 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
+    int score;
+    bool panorams_cheked[11];
     std::string curpath;
+    bool show_q=true;
     bool carsim=true;
     bool showfps,helper,mmove;
     float fspeed=0,sspeed=0;
@@ -47,9 +49,9 @@ private:
     std::vector<Parser::textcord> otd;
     std::vector<Parser::surf> ofd;
     PanoramaView *pv;
-    Parser *city,*zaparik,*skybox,*mroads,*cityroof,*trotuar,*signs,*biblio;
+    Parser *city,*zaparik,*skybox,*mroads,*cityroof,*trotuar,*signs,*biblio,*glinka;
     /*Parser *atb,*atb2, *aurora,*cerkov1,*cerkov2;
-    Parser *cerkov3,*papich,*ecotown,*glinka,*intour;
+    Parser *cerkov3,*papich,*ecotown,,*intour;
     Parser *macdak,*panorama,*teatr;
     Parser *ukraine,*zapor,*zazik,*zhd1;*/
     QTimer *timer;

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'optionsf.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.1
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -108,7 +108,7 @@ public:
         renderDSliderValue = new QLabel(gridWidget);
         renderDSliderValue->setObjectName(QString::fromUtf8("renderDSliderValue"));
         QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
+        font.setFamilies({QString::fromUtf8("Arial")});
         font.setPointSize(14);
         renderDSliderValue->setFont(font);
         renderDSliderValue->setStyleSheet(QString::fromUtf8("color: #fff"));
@@ -291,9 +291,10 @@ public:
         sizePolicy1.setHeightForWidth(optLabel->sizePolicy().hasHeightForWidth());
         optLabel->setSizePolicy(sizePolicy1);
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
+        font1.setFamilies({QString::fromUtf8("Arial")});
         font1.setPointSize(26);
         font1.setBold(true);
+        font1.setKerning(true);
         optLabel->setFont(font1);
         optLabel->setStyleSheet(QString::fromUtf8("color: #fff;"));
         optLabel->setScaledContents(false);

@@ -1,9 +1,7 @@
 #ifndef PAUSEFORM_H
 #define PAUSEFORM_H
-
 #include <QDialog>
 #include <QKeyEvent>
-#include <mainwindow.h>
 
 namespace Ui {
 class pauseform;
@@ -25,7 +23,6 @@ private slots:
 private:
     Ui::pauseform *ui;
     virtual void keyPressEvent(QKeyEvent *e);
-    MainWindow *mw;
 };
 
 #endif // PAUSEFORM_H

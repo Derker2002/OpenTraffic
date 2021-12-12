@@ -1,6 +1,6 @@
 #include "pauseform.h"
 #include "ui_pauseform.h"
-
+#include "mainwindow.h"
 pauseform::pauseform(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::pauseform)
@@ -26,7 +26,10 @@ void pauseform::on_backButton_clicked()
 
 void pauseform::on_menuButton_clicked()
 {
-    mw = new MainWindow();
+    MainWindow *mw = new MainWindow();
+    mw->resize(this->width(),this->height());
+    mw->setWindowState(Qt::WindowFullScreen);
+    mw->show();
     close();
     parentWidget()->close();
 }
