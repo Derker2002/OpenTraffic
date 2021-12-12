@@ -8,6 +8,7 @@ debug/optionsf.o
 debug/panoramaview.o
 debug/parser.o
 debug/pauseform.o
+debug/questionform.o
 debug/moc_glview.o
 debug/moc_aboutus.o
 debug/moc_leaderboard.o
@@ -15,3 +16,4 @@ debug/moc_mainwindow.o
 debug/moc_optionsf.o
 debug/moc_panoramaview.o
 debug/moc_pauseform.o
+debug/moc_questionform.o

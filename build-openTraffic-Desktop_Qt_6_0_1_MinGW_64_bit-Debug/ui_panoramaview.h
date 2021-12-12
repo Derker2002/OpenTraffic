@@ -22,7 +22,6 @@ class Ui_PanoramaView
 {
 public:
     QGridLayout *gridLayout_2;
-    QPushButton *nextButton;
     QGridLayout *gridLayout;
     CustomGraphicsView *graphicsView;
     QPushButton *stopButton;
@@ -35,28 +34,6 @@ public:
         PanoramaView->setStyleSheet(QString::fromUtf8("background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));"));
         gridLayout_2 = new QGridLayout(PanoramaView);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        nextButton = new QPushButton(PanoramaView);
-        nextButton->setObjectName(QString::fromUtf8("nextButton"));
-        nextButton->setStyleSheet(QString::fromUtf8(" QPushButton {\n"
-"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
-"	border-style: solid;\n"
-"	border-width: 1px;\n"
-"	border-color: rgb(24, 54, 58);\n"
-"	border-radius: 10px;\n"
-"	font-family: \"Arial\";\n"
-"	font-size: 20px;\n"
-"	font-weight: bold;\n"
-"	color: #fff;\n"
-" }\n"
-" QPushButton:hover {\n"
-"     background: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.011, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
-" }\n"
-" QPushButton:pressed {\n"
-"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
-" }"));
-
-        gridLayout_2->addWidget(nextButton, 0, 0, 1, 1);
-
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         graphicsView = new CustomGraphicsView(PanoramaView);
@@ -65,7 +42,7 @@ public:
         gridLayout->addWidget(graphicsView, 1, 0, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 1, 0, 1, 1);
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
         stopButton = new QPushButton(PanoramaView);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
@@ -87,7 +64,7 @@ public:
 "     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
 " }"));
 
-        gridLayout_2->addWidget(stopButton, 2, 0, 1, 1);
+        gridLayout_2->addWidget(stopButton, 1, 0, 1, 1);
 
 
         retranslateUi(PanoramaView);
@@ -98,7 +75,6 @@ public:
     void retranslateUi(QWidget *PanoramaView)
     {
         PanoramaView->setWindowTitle(QCoreApplication::translate("PanoramaView", "Form", nullptr));
-        nextButton->setText(QCoreApplication::translate("PanoramaView", "\320\235\320\260\321\201\321\202\321\203\320\277\320\275\320\260 \320\277\320\260\320\275\320\276\321\200\320\260\320\274\320\260", nullptr));
         stopButton->setText(QCoreApplication::translate("PanoramaView", "\320\227\320\260\320\262\320\265\321\200\321\210\320\270\321\202\320\270", nullptr));
     } // retranslateUi
 

@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -21,32 +23,119 @@ class Ui_pauseform
 {
 public:
     QGridLayout *gridLayout_2;
+    QWidget *BackGround1;
+    QGridLayout *BackGround;
+    QLabel *label;
+    QWidget *GridLayout;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *backButton;
+    QPushButton *menuButton;
 
-    void setupUi(QWidget *pauseform)
+    void setupUi(QDialog *pauseform)
     {
         if (pauseform->objectName().isEmpty())
             pauseform->setObjectName(QString::fromUtf8("pauseform"));
-        pauseform->resize(400, 300);
-        pauseform->setStyleSheet(QString::fromUtf8("background: #808080"));
+        pauseform->setWindowModality(Qt::WindowModal);
+        pauseform->resize(656, 426);
+        pauseform->setFocusPolicy(Qt::NoFocus);
+        pauseform->setModal(true);
         gridLayout_2 = new QGridLayout(pauseform);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout = new QGridLayout();
+        BackGround1 = new QWidget(pauseform);
+        BackGround1->setObjectName(QString::fromUtf8("BackGround1"));
+        BackGround1->setStyleSheet(QString::fromUtf8("QWidget#BackGround1 {\n"
+"	background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.5 rgba(64, 140, 153, 255), stop:1 rgba(49, 108, 117, 255));\n"
+"	border-style: solid;\n"
+"	border-width: 3px;\n"
+"	border-color: rgb(24, 54, 58);\n"
+"	border-radius: 30px;\n"
+"	font-family: \"Arial\";\n"
+"	font-size: 20px;\n"
+"	font-weight: bold;\n"
+"	color: #fff;\n"
+"}"));
+        BackGround = new QGridLayout(BackGround1);
+        BackGround->setObjectName(QString::fromUtf8("BackGround"));
+        BackGround->setContentsMargins(9, 10, 9, 30);
+        label = new QLabel(BackGround1);
+        label->setObjectName(QString::fromUtf8("label"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Arial"));
+        font.setPointSize(26);
+        font.setBold(true);
+        label->setFont(font);
+        label->setStyleSheet(QString::fromUtf8("color:#fff"));
+        label->setAlignment(Qt::AlignCenter);
+
+        BackGround->addWidget(label, 0, 0, 1, 1);
+
+        GridLayout = new QWidget(BackGround1);
+        GridLayout->setObjectName(QString::fromUtf8("GridLayout"));
+        GridLayout->setFocusPolicy(Qt::NoFocus);
+        GridLayout->setStyleSheet(QString::fromUtf8("border : 0px solid blue;\n"
+"border-top : 3px solid rgb(24, 54, 58);\n"
+"background-color: rgb(24, 54, 58);"));
+        gridLayout = new QGridLayout(GridLayout);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        pushButton_2 = new QPushButton(pauseform);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        gridLayout->setContentsMargins(9, 9, 9, 9);
+        backButton = new QPushButton(GridLayout);
+        backButton->setObjectName(QString::fromUtf8("backButton"));
+        backButton->setMinimumSize(QSize(300, 40));
+        backButton->setCursor(QCursor(Qt::PointingHandCursor));
+        backButton->setStyleSheet(QString::fromUtf8(" QPushButton {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+"	border-style: solid;\n"
+"	border-width: 1px;\n"
+"	border-color: rgb(24, 54, 58);\n"
+"	border-radius: 10px;\n"
+"	font-family: \"Arial\";\n"
+"	font-size: 20px;\n"
+"	font-weight: bold;\n"
+"	color: #fff;\n"
+" }\n"
+" QPushButton:hover {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.011, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+" }\n"
+" QPushButton:pressed {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+" }"));
 
-        gridLayout->addWidget(pushButton_2, 1, 0, 1, 1);
+        gridLayout->addWidget(backButton, 0, 0, 1, 1);
 
-        pushButton = new QPushButton(pauseform);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        menuButton = new QPushButton(GridLayout);
+        menuButton->setObjectName(QString::fromUtf8("menuButton"));
+        menuButton->setMinimumSize(QSize(300, 40));
+        menuButton->setCursor(QCursor(Qt::PointingHandCursor));
+        menuButton->setStyleSheet(QString::fromUtf8(" QPushButton {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+"	border-style: solid;\n"
+"	border-width: 1px;\n"
+"	border-color: rgb(24, 54, 58);\n"
+"	border-radius: 10px;\n"
+"	font-family: \"Arial\";\n"
+"	font-size: 20px;\n"
+"	font-weight: bold;\n"
+"	color: #fff;\n"
+" }\n"
+" QPushButton:hover {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.011, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+" }\n"
+" QPushButton:pressed {\n"
+"     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
+" }"));
 
-        gridLayout->addWidget(pushButton, 2, 0, 1, 1);
+        gridLayout->addWidget(menuButton, 1, 0, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+        BackGround->addWidget(GridLayout, 1, 0, 1, 1);
+
+
+        gridLayout_2->addWidget(BackGround1, 1, 0, 1, 1);
 
 
         retranslateUi(pauseform);
@@ -54,11 +143,12 @@ public:
         QMetaObject::connectSlotsByName(pauseform);
     } // setupUi
 
-    void retranslateUi(QWidget *pauseform)
+    void retranslateUi(QDialog *pauseform)
     {
-        pauseform->setWindowTitle(QCoreApplication::translate("pauseform", "Form", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("pauseform", "PushButton", nullptr));
-        pushButton->setText(QCoreApplication::translate("pauseform", "PushButton", nullptr));
+        pauseform->setWindowTitle(QCoreApplication::translate("pauseform", "Dialog", nullptr));
+        label->setText(QCoreApplication::translate("pauseform", "\320\237 \320\220 \320\243 \320\227 \320\220", nullptr));
+        backButton->setText(QCoreApplication::translate("pauseform", "\320\237 \320\240 \320\236 \320\224 \320\236 \320\222 \320\226 \320\230 \320\242 \320\230", nullptr));
+        menuButton->setText(QCoreApplication::translate("pauseform", "\320\237 \320\236 \320\222 \320\225 \320\240 \320\235 \320\243 \320\242 \320\230 \320\241 \320\257  \320\224 \320\236  \320\223 \320\236 \320\233 \320\236 \320\222 \320\235 \320\236 \320\223 \320\236  \320\234 \320\225 \320\235 \320\256", nullptr));
     } // retranslateUi
 
 };

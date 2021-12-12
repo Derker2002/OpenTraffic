@@ -6,12 +6,18 @@ GLView::GLView(QWidget *parent)
     : QOpenGLWidget(parent)
 
 {
+    for(int i = 0; i < 11; i++)
+        panorams_cheked[i]=false;
     openPanorama = new QPushButton(this);
     openPanorama->setText("Панорама");
     openPanorama->setGeometry(0,50,100,50);
     fps=new QLabel(this);
     fps->setFont(QFont("Tahoma",14,1,false));
     fps->resize(100,50);
+    qf = new QuestionForm(this);
+    Qt::WindowFlags flags = qf->windowFlags();
+    qf->setWindowFlags(flags | Qt::Dialog | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint  | Qt::FramelessWindowHint);
+    qf->setAttribute(Qt::WA_TranslucentBackground);
 }
 
 void GLView::initializeGL(){
@@ -32,6 +38,16 @@ maxspeed= L[3].split("=")[1].toInt();
 mmove = L[4].split("=")[1].toInt();
 if(showfps)fps->show();
 
+QFile file(QDir::currentPath() + "/files/PDRQUESTIONS.pdr");
+QString questform;
+if (file.open(QFile::ReadOnly | QFile::Text)){
+    QTextStream stream(&file);
+    while (!stream.atEnd())
+        questform.append(stream.readLine());
+}
+QUEST = questform.split(";");
+file.close();
+
 glEnable(GL_DEPTH_TEST);
 glEnable(GL_LIGHTING);
 glEnable(GL_LIGHT0);
@@ -50,19 +66,16 @@ zaparik=new Parser(setPath("/obj/ShcodaCar.obj"),setPath("/textures/CarColor.png
 //atb=new Parser(setPath("/obj/ATB1.obj"),setPath("/textures/buildings/ATB.png"));
 //atb2=new Parser(setPath("/obj/ATB2.obj"),setPath("/textures/buildings/ATB.png"));
 //aurora=new Parser(setPath("/obj/Aurora.obj"),setPath("/textures/buildings/Aurora.png"));
-//biblio=new Parser(setPath("/obj/Biblio.obj"),setPath("/textures/buildings/Biblio.png"));
 //cerkov2=new Parser(setPath("/obj/Cerkov2.obj"),setPath("/textures/buildings/zolotie_grivni.png"));
 //cerkov3=new Parser(setPath("/obj/Cerkov3.obj"),setPath("/textures/buildings/Gold.png"));
 //papich=new Parser(setPath("/obj/Papich.obj"),setPath("/textures/buildings/Papich.png"));
-//glinka=new Parser(setPath("/obj/Glinka.obj"),setPath("/textures/buildings/glina.png"));
-//teatr=new Parser(setPath("/obj/Teatr.obj"),setPath("/textures/buildings/muz.png"));
+glinka=new Parser(setPath("/obj/Glinka.obj"),setPath("/textures/buildings/glina.png"));
 //zazik=new Parser(setPath("/obj/Zaz1k.obj"),setPath("/textures/buildings/zaz.png"));
 //zhd1=new Parser(setPath("/obj/ZHD1.obj"),setPath("/textures/buildings/zhd.png"));
 //ecotown=new Parser(setPath("/obj/EcoTower.obj"),setPath("/textures/buildings/ECO1.png"));
 //panorama=new Parser(setPath("/obj/Panorama.obj"),setPath("/textures/buildings/ATB.png"));
 //zapor=new Parser(setPath("/obj/Zapor.obj"),setPath("/textures/buildings/Zapor.png"));
 //intour=new Parser(setPath("/obj/Intour.obj"),setPath("/textures/buildings/intour2.png"));
-//macdak=new Parser(setPath("/obj/MacDak.obj"),setPath("/textures/buildings/MacDak.png"));
 //ukraine=new Parser(setPath("/obj/Ukraina.obj"),setPath("/textures/buildings/ukraina.png"));
 //cerkov1=new Parser(setPath("/obj/Cerkov1.obj"),setPath("/textures/buildings/cerkov1.png"));
 timer=new QTimer();
@@ -70,8 +83,8 @@ connect(timer,SIGNAL(timeout()),this,SLOT(tTick()));
 connect(openPanorama,SIGNAL(clicked()),this,SLOT(on_openPanorama_clicked()));
 timer->start(5);
 xPos=10152.4;
-yPos=-70;
-zPos=11348.8;
+yPos=-66;
+zPos=11328.8;
 glTranslatef(xPos,yPos,zPos);
 if(carsim)xRot=35;
 }
@@ -108,30 +121,15 @@ void GLView::paintGL(){
     draw(mroads);
     draw(city);
     draw(cityroof);
-    //draw(trotuar);
+    draw(trotuar);
 
     draw(signs);
-
-    //draw(atb);
-    //draw(atb2);
     //draw(aurora);
-    //draw(biblio);
-    //draw(cerkov2);
     //draw(papich);
     //draw(cerkov3);
-    //draw(glinka);
-    //draw(teatr);
+    draw(glinka);
 
-    //draw(zazik);
-    //draw(zhd1);
-    //draw(ecotown);
-    //draw(panorama);
-
-    /*  hdraw(ukraine);
-    draw(cerkov1);
-    draw(intour);
-    draw(macdak);
-    draw(zapor);
+    /*  draw(ukraine);
     */
 
     if(showfps){
@@ -169,7 +167,7 @@ void GLView::moveCar()
     draw(zaparik);
     glRotatef(-ycRot-yRot,0,1,0);
     glRotatef(yRot,0,1,0);
-    glTranslatef(xPos,yPos+4,zPos-20);
+    glTranslatef(xPos,yPos,zPos);
 
     //qDebug()<<xPos<<" "<<yPos<<" "<<zPos;
 }
@@ -275,11 +273,14 @@ void GLView::keyPressEvent(QKeyEvent *e)
     if (e->nativeScanCode() == 1) {
         pf = new pauseform(this);
         Qt::WindowFlags flags = pf->windowFlags();
-        pf->setWindowFlags(flags | Qt::Tool | Qt::FramelessWindowHint);
+        pf->setFocus();
+        pf->setWindowFlags(flags | Qt::Dialog | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint  | Qt::FramelessWindowHint);
         pf->setAttribute(Qt::WA_TranslucentBackground);
         pf->show();
+
     }
     update();
+
 }
 char *GLView::setPath(char *path)
 {
@@ -290,19 +291,17 @@ char *GLView::setPath(char *path)
 }
 void GLView::on_openPanorama_clicked()
 {
-    pv = new PanoramaView(this);
-    pv->resize(this->width(),this->height());
-    pv->setWindowState(Qt::WindowFullScreen);
-    pv->show();
 
 }
 void GLView::tTick()
 {
+
     float angel,rot;
 
     if(ycRot>360 || ycRot<-360)ycRot=ycRot/360;
     if(fspeed<=0.05 && fspeed>=-0.05)fspeed=0;
     if(fspeed!=0 ){
+        show_q=true;
         if(!carsim)angel=-yRot/180*M_PI;
         else if(carsim){
             //qDebug()<<yRot<<" "<<ycRot;
@@ -327,6 +326,111 @@ void GLView::tTick()
         if(fspeed>0){fspeed-=0.05; sspeed-=0.1;}
         else {fspeed+=0.05;sspeed+=0.1;}
 
+    }else
+        if(fspeed==0 && show_q)
+    {
+        if(xPos < 10140.5 && zPos < 11338.4 && xPos>10075.2  && zPos>11309.1){
+            qDebug()<<"Panorama1";
+            indexq = 0;
+            qf->panonum = 1;
+            qf->setmLabel("З А П И Т А Н Н Я  1 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 10008 && zPos < 11246 && xPos>9965 && zPos>11219){
+            qDebug()<<"Panorama2";
+            indexq = 5;
+            qf->setmLabel("З А П И Т А Н Н Я  2 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 9602 && zPos < 10899 && xPos>9553 && zPos>10871){
+            qDebug()<<"Panorama3";
+            indexq = 10;
+            qf->setmLabel("З А П И Т А Н Н Я  3 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 9245 && zPos < 10587 && xPos>9039 && zPos>10480){
+            qDebug()<<"Panorama4";
+            indexq = 15;
+            qf->setmLabel("З А П И Т А Н Н Я  4 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 8811 && zPos < 10256 && xPos>8760 && zPos>10223){
+            indexq = 20;
+            qDebug()<<"Panorama5";
+            qf->setmLabel("З А П И Т А Н Н Я  5 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 8389 && zPos < 9913 && xPos>8342 && zPos>9880){
+            qDebug()<<"Panorama6";
+            indexq = 25;
+            qf->setmLabel("З А П И Т А Н Н Я  6 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 10008 && zPos < 9419 && xPos>7744 && zPos>9389){
+            qDebug()<<"Panorama7";
+            indexq = 30;
+            qf->setmLabel("З А П И Т А Н Н Я  7 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 7581 && zPos < 9249 && xPos>7534 && zPos>9217){
+            qDebug()<<"Panorama8";
+            indexq = 35;
+            qf->setmLabel("З А П И Т А Н Н Я  8 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 7195 && zPos < 8928 && xPos>7142 && zPos>8893){
+            qDebug()<<"Panorama9";
+            indexq = 40;
+            qf->setmLabel("З А П И Т А Н Н Я  9 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 7040 && zPos < 8804 && xPos>6994 && zPos>8775){
+            qDebug()<<"Panorama10";
+            indexq = 45;
+            qf->setmLabel("З А П И Т А Н Н Я  10 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+        if(xPos < 6763 && zPos < 8586 && xPos>6704 && zPos>8558){
+            qDebug()<<"Panorama11";
+            indexq = 50;
+            qf->setmLabel("З А П И Т А Н Н Я  11 / 11");
+            qf->setQuestionLabel(QUEST[indexq]);
+            qf->setAnswers(QUEST[indexq+1], QUEST[indexq+2], QUEST[indexq+3], QUEST[indexq+4]);
+            qf->show();
+        }
+
+            qDebug()<<xPos<<" "<<zPos;
+        show_q=false;
     }
     update();
 }

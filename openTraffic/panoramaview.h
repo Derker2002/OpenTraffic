@@ -22,6 +22,7 @@ public:
     ~PanoramaView();
     QList<QGraphicsRectItem*> lastItems;
     QPixmap pip;
+    void loadingPanorama(uint panon);
 
 private slots:
     void loadSigns(int panoNum);

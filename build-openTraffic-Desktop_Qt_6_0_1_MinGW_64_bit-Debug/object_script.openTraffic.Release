@@ -8,6 +8,7 @@ release/optionsf.o
 release/panoramaview.o
 release/parser.o
 release/pauseform.o
+release/questionform.o
 release/moc_glview.o
 release/moc_aboutus.o
 release/moc_leaderboard.o
@@ -15,3 +16,4 @@ release/moc_mainwindow.o
 release/moc_optionsf.o
 release/moc_panoramaview.o
 release/moc_pauseform.o
+release/moc_questionform.o

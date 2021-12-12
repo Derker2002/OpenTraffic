@@ -22,7 +22,8 @@ SOURCES += \
     optionsf.cpp \
     panoramaview.cpp \
     parser.cpp \
-    pauseform.cpp
+    pauseform.cpp \
+    questionform.cpp
 
 HEADERS += \
     customgraphicsview.h \
@@ -34,7 +35,8 @@ HEADERS += \
     optionsf.h \
     panoramaview.h \
     parser.h \
-    pauseform.h
+    pauseform.h \
+    questionform.h
 
 FORMS += \
     aboutus.ui \
@@ -42,7 +44,8 @@ FORMS += \
     mainwindow.ui \
     optionsf.ui \
     panoramaview.ui \
-    pauseform.ui
+    pauseform.ui \
+    questionform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

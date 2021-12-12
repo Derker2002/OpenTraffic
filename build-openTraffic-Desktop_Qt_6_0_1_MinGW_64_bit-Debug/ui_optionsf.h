@@ -294,6 +294,7 @@ public:
         font1.setFamily(QString::fromUtf8("Arial"));
         font1.setPointSize(26);
         font1.setBold(true);
+        font1.setKerning(true);
         optLabel->setFont(font1);
         optLabel->setStyleSheet(QString::fromUtf8("color: #fff;"));
         optLabel->setScaledContents(false);

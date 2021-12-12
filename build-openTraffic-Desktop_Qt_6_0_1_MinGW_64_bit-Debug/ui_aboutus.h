@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -26,10 +27,11 @@ public:
     QGridLayout *gridLayout;
     QWidget *pageWidget;
     QGridLayout *LeadersView;
-    QLabel *pageLabel;
     QWidget *imgLinks;
     QGridLayout *gridLayout_3;
     QPushButton *GitHub;
+    QLabel *pageLabel;
+    QListView *listView;
     QLabel *aboutLab;
     QPushButton *pushButton;
 
@@ -67,19 +69,6 @@ public:
 "background-color: rgb(24, 54, 58);"));
         LeadersView = new QGridLayout(pageWidget);
         LeadersView->setObjectName(QString::fromUtf8("LeadersView"));
-        pageLabel = new QLabel(pageWidget);
-        pageLabel->setObjectName(QString::fromUtf8("pageLabel"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
-        font.setPointSize(14);
-        font.setBold(true);
-        pageLabel->setFont(font);
-        pageLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
-        pageLabel->setAlignment(Qt::AlignCenter);
-        pageLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
-
-        LeadersView->addWidget(pageLabel, 0, 0, 1, 3);
-
         imgLinks = new QWidget(pageWidget);
         imgLinks->setObjectName(QString::fromUtf8("imgLinks"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
@@ -98,7 +87,25 @@ public:
         gridLayout_3->addWidget(GitHub, 0, 0, 1, 1);
 
 
-        LeadersView->addWidget(imgLinks, 1, 1, 1, 1);
+        LeadersView->addWidget(imgLinks, 2, 1, 1, 1);
+
+        pageLabel = new QLabel(pageWidget);
+        pageLabel->setObjectName(QString::fromUtf8("pageLabel"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Arial"));
+        font.setPointSize(14);
+        font.setBold(true);
+        pageLabel->setFont(font);
+        pageLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
+        pageLabel->setAlignment(Qt::AlignCenter);
+        pageLabel->setTextInteractionFlags(Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse);
+
+        LeadersView->addWidget(pageLabel, 1, 0, 1, 3);
+
+        listView = new QListView(pageWidget);
+        listView->setObjectName(QString::fromUtf8("listView"));
+
+        LeadersView->addWidget(listView, 0, 0, 1, 1);
 
 
         gridLayout->addWidget(pageWidget, 2, 0, 1, 1);
@@ -162,9 +169,9 @@ public:
     void retranslateUi(QWidget *AboutUs)
     {
         AboutUs->setWindowTitle(QCoreApplication::translate("AboutUs", "Form", nullptr));
+        GitHub->setText(QString());
         pageLabel->setText(QCoreApplication::translate("AboutUs", "<html><head/><body><p>\320\233\320\260\321\201\320\272\320\260\320\262\320\276 \320\277\321\200\320\276\321\201\320\270\320\274\320\276 \320\264\320\276 \320\275\320\260\321\210\320\276\320\263\320\276 \320\264\320\276\320\264\320\260\321\202\320\272\321\203 - openTraffic</p><p><br/></p><p>\320\246\320\265\320\271 \320\264\320\276\320\264\320\260\321\202\320\276\320\272 \320\261\321\203\320\262 \321\201\321\202\320\262\320\276\321\200\320\265\320\275\320\275\320\270\320\271 \321\217\320\272 \320\272\321\203\321\200\321\201\320\276\320\262\320\260 \321\200\320\276\320\261\320\276\321\202\320\260 \320\267 \320\236\320\236\320\237</p><p>\320\243 \321\200\320\276\320\267\321\200\320\276\320\261\321\206\321\226 \320\277\321\200\320\270\320\271\320\274\320\260\320\273\320\270 \321\203\321\207\320\260\321\201\321\202\321\214 \321\201\321\202\321\203\320\264\320\265\320\275\321\202\320\270 \320\263\321\200\321\203\320\277\320\277\320\270 \320\232\320\235\320\242-110:<br/></p><p>\320\245\320\276\321\205\320\273\320\276"
                         "\320\262 \320\235\320\260\320\267\320\260\321\200</p><p>\320\232\321\203\321\207\320\265\321\200 \320\220\320\275\320\264\321\200\321\226\320\271</p><p>\320\233\320\260\320\262\321\200\320\276\320\262 \320\221\320\276\320\263\320\264\320\260\320\275</p><p>\320\250\320\265\320\277\320\273\321\217\320\272\320\276\320\262 \320\223\320\265\320\276\321\200\320\263\321\226\320\271<br/></p><p>\320\257\320\272\321\211\320\276 \320\262\320\260\320\274 \321\211\320\276\321\201\321\214 \320\277\320\276\321\202\321\200\321\226\320\261\320\275\320\276, \320\267\320\262\320\265\321\200\321\202\320\260\320\271\321\202\320\265\321\201\321\217 \320\267\320\260 \320\277\320\276\321\201\320\270\320\273\320\260\320\275\320\275\321\217\320\274 \320\275\320\270\320\266\321\207\320\265!</p><p>\320\224\321\217\320\272\321\203\321\224\320\274\320\276!</p></body></html>", nullptr));
-        GitHub->setText(QString());
         aboutLab->setText(QCoreApplication::translate("AboutUs", "\320\237 \320\240 \320\236  \320\235 \320\220 \320\241", nullptr));
         pushButton->setText(QCoreApplication::translate("AboutUs", "\342\206\220  \320\237 \320\236 \320\222 \320\225 \320\240 \320\235 \320\243 \320\242 \320\230 \320\241 \320\257", nullptr));
     } // retranslateUi

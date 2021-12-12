@@ -18,40 +18,20 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
-    <widget class="QPushButton" name="nextButton">
-     <property name="styleSheet">
-      <string notr="true"> QPushButton {
-     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));
-	border-style: solid;
-	border-width: 1px;
-	border-color: rgb(24, 54, 58);
-	border-radius: 10px;
-	font-family: &quot;Arial&quot;;
-	font-size: 20px;
-	font-weight: bold;
-	color: #fff;
- }
- QPushButton:hover {
-     background: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.011, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));
- }
- QPushButton:pressed {
-     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));
- }</string>
-     </property>
-     <property name="text">
-      <string>Наступна панорама</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
     <layout class="QGridLayout" name="gridLayout">
      <item row="1" column="0">
       <widget class="CustomGraphicsView" name="graphicsView"/>
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QPushButton" name="stopButton">
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>40</height>
+      </size>
+     </property>
      <property name="styleSheet">
       <string notr="true"> QPushButton {
      background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));
@@ -72,7 +52,7 @@
  }</string>
      </property>
      <property name="text">
-      <string>Завершити</string>
+      <string>В И Й Т И  З  П А Н О Р А М И</string>
      </property>
     </widget>
    </item>
