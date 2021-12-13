@@ -184,6 +184,9 @@ background-color: rgb(24, 54, 58);</string>
          </item>
          <item row="3" column="0">
           <widget class="QRadioButton" name="answ1">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="font">
             <font>
              <family>Arial</family>
@@ -196,6 +199,9 @@ background-color: rgb(24, 54, 58);</string>
            <property name="text">
             <string>Миготіння зеленого сигналу попереджає про несправність світлофора,
 тому слід керуватися вимогами знаків пріоритету.</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

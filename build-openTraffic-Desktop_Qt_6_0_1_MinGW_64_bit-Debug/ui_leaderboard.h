@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'leaderboard.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.1
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -14,6 +14,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,6 +27,7 @@ public:
     QGridLayout *gridLayout;
     QWidget *gridWidget;
     QGridLayout *LeadersView;
+    QTextEdit *textEdit;
     QLabel *leadLabel;
     QPushButton *pushButton;
 
@@ -63,6 +65,16 @@ public:
 "background-color: rgb(24, 54, 58);"));
         LeadersView = new QGridLayout(gridWidget);
         LeadersView->setObjectName(QString::fromUtf8("LeadersView"));
+        textEdit = new QTextEdit(gridWidget);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        QFont font;
+        font.setPointSize(14);
+        font.setBold(true);
+        textEdit->setFont(font);
+        textEdit->setStyleSheet(QString::fromUtf8("color:white;"));
+
+        LeadersView->addWidget(textEdit, 0, 0, 1, 1);
+
 
         gridLayout->addWidget(gridWidget, 2, 0, 1, 1);
 
@@ -73,11 +85,11 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(leadLabel->sizePolicy().hasHeightForWidth());
         leadLabel->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
-        font.setPointSize(26);
-        font.setBold(true);
-        leadLabel->setFont(font);
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Arial")});
+        font1.setPointSize(26);
+        font1.setBold(true);
+        leadLabel->setFont(font1);
         leadLabel->setStyleSheet(QString::fromUtf8("color: #fff;"));
         leadLabel->setScaledContents(false);
         leadLabel->setAlignment(Qt::AlignCenter);

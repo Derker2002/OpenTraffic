@@ -55,7 +55,22 @@
 border-top : 3px solid rgb(24, 54, 58);
 background-color: rgb(24, 54, 58);</string>
         </property>
-        <layout class="QGridLayout" name="LeadersView"/>
+        <layout class="QGridLayout" name="LeadersView">
+         <item row="0" column="0">
+          <widget class="QTextEdit" name="textEdit">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color:white;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
       <item row="0" column="0">

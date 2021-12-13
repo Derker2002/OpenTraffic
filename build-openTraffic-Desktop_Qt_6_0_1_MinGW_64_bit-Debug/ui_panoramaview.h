@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'panoramaview.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.1
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -33,7 +33,9 @@ public:
         PanoramaView->resize(400, 300);
         PanoramaView->setStyleSheet(QString::fromUtf8("background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));"));
         gridLayout_2 = new QGridLayout(PanoramaView);
+        gridLayout_2->setSpacing(0);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         graphicsView = new CustomGraphicsView(PanoramaView);
@@ -41,11 +43,9 @@ public:
 
         gridLayout->addWidget(graphicsView, 1, 0, 1, 1);
 
-
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
-
         stopButton = new QPushButton(PanoramaView);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
+        stopButton->setMinimumSize(QSize(300, 40));
         stopButton->setStyleSheet(QString::fromUtf8(" QPushButton {\n"
 "     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(89, 155, 179, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
 "	border-style: solid;\n"
@@ -64,7 +64,10 @@ public:
 "     background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.2 rgba(64, 140, 153, 255));\n"
 " }"));
 
-        gridLayout_2->addWidget(stopButton, 1, 0, 1, 1);
+        gridLayout->addWidget(stopButton, 2, 0, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
 
         retranslateUi(PanoramaView);
@@ -75,7 +78,7 @@ public:
     void retranslateUi(QWidget *PanoramaView)
     {
         PanoramaView->setWindowTitle(QCoreApplication::translate("PanoramaView", "Form", nullptr));
-        stopButton->setText(QCoreApplication::translate("PanoramaView", "\320\227\320\260\320\262\320\265\321\200\321\210\320\270\321\202\320\270", nullptr));
+        stopButton->setText(QCoreApplication::translate("PanoramaView", "\320\222 \320\230 \320\231 \320\242 \320\230  \320\227  \320\237 \320\220 \320\235 \320\236 \320\240 \320\220 \320\234 \320\230", nullptr));
     } // retranslateUi
 
 };

@@ -23,7 +23,7 @@ public:
     QList<QGraphicsRectItem*> lastItems;
     QPixmap pip;
     void loadingPanorama(uint panon);
-
+    QRect pgeom;
 private slots:
     void loadSigns(int panoNum);
 

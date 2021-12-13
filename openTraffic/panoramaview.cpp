@@ -1,6 +1,5 @@
 #include "panoramaview.h"
 #include "ui_panoramaview.h"
-
 QPen clickedPen = QPen(QColor(78,228,78));
 QString jsonSigns;
 
@@ -85,5 +84,6 @@ void PanoramaView::loadingPanorama(uint panon){
 
 void PanoramaView::on_stopButton_clicked()
 {
+    parentWidget()->setGeometry(pgeom);
     close();
 }
