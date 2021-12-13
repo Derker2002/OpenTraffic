@@ -9,7 +9,10 @@ LeaderBoard::LeaderBoard(QWidget *parent) :
     ui(new Ui::LeaderBoard)
 {
     ui->setupUi(this);
-    ui->textEdit->setText("");
+    ui->nameEdit->setText("");
+    ui->scoreEdit->setText("");
+    ui->nameEdit->setAlignment(Qt::AlignHCenter);
+    ui->scoreEdit->setAlignment(Qt::AlignHCenter);
     QString set_str;
     QFile leaderBoard(QDir::currentPath() + "/files/scores.scor");
     if (!leaderBoard.open(QFile::ReadOnly | QFile::Text))
@@ -20,9 +23,14 @@ LeaderBoard::LeaderBoard(QWidget *parent) :
     }
     leaderBoard.close();
     QStringList leaders=set_str.split(";");
-    for(int i=0;i<leaders.length();i++)
-        ui->textEdit->append(leaders[i]+"\n");
-;
+    for(int i=0;i<leaders.length();i++){
+        if (leaders[i] != ""){
+            ui->nameEdit->append(leaders[i].split('\t')[0]+"\n");
+            ui->scoreEdit->append(leaders[i].split('\t')[1]+"\n");
+        }
+    }
+    connect(ui->nameEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->scoreEdit->verticalScrollBar(), SLOT(setValue(int)));
+    connect(ui->scoreEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->nameEdit->verticalScrollBar(), SLOT(setValue(int)));
 }
 
 LeaderBoard::~LeaderBoard()

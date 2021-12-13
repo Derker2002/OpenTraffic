@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'questionform.ui'
 **
-** Created by: Qt User Interface Compiler version 6.1.3
+** Created by: Qt User Interface Compiler version 6.0.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -95,7 +95,7 @@ public:
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
         QFont font;
-        font.setFamilies({QString::fromUtf8("Arial")});
+        font.setFamily(QString::fromUtf8("Arial"));
         font.setPointSize(26);
         font.setBold(true);
         label->setFont(font);
@@ -116,7 +116,7 @@ public:
         answ2 = new QRadioButton(GridLayout);
         answ2->setObjectName(QString::fromUtf8("answ2"));
         QFont font1;
-        font1.setFamilies({QString::fromUtf8("Arial")});
+        font1.setFamily(QString::fromUtf8("Arial"));
         font1.setPointSize(12);
         answ2->setFont(font1);
         answ2->setStyleSheet(QString::fromUtf8("color:#fff"));
@@ -128,7 +128,7 @@ public:
         sizePolicy.setHeightForWidth(questionLabel->sizePolicy().hasHeightForWidth());
         questionLabel->setSizePolicy(sizePolicy);
         QFont font2;
-        font2.setFamilies({QString::fromUtf8("Arial")});
+        font2.setFamily(QString::fromUtf8("Arial"));
         font2.setPointSize(18);
         font2.setBold(true);
         questionLabel->setFont(font2);
