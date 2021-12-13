@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFile>
 #include <QMessageBox>
+#include <QScrollBar>
 LeaderBoard::LeaderBoard(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LeaderBoard)
@@ -29,8 +30,8 @@ LeaderBoard::LeaderBoard(QWidget *parent) :
             ui->scoreEdit->append(leaders[i].split('\t')[1]+"\n");
         }
     }
-    connect(ui->nameEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->scoreEdit->verticalScrollBar(), SLOT(setValue(int)));
-    connect(ui->scoreEdit->verticalScrollBar(), SIGNAL(valueChanged(int)), ui->nameEdit->verticalScrollBar(), SLOT(setValue(int)));
+    connect(ui->nameEdit->verticalScrollBar(), SIGNAL(valueChanged(int)),ui->scoreEdit->verticalScrollBar(), SLOT(setValue(int)));
+    connect(ui->scoreEdit->verticalScrollBar(), SIGNAL(valueChanged(int)),ui->nameEdit->verticalScrollBar(), SLOT(setValue(int)));
 }
 
 LeaderBoard::~LeaderBoard()
@@ -42,4 +43,9 @@ void LeaderBoard::on_pushButton_clicked()
 {
     close();
     wui->centralwidget->setVisible(1);
+}
+
+void LeaderBoard::scroll()
+{
+
 }

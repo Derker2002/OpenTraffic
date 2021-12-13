@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'leaderboard.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.1
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -101,7 +101,7 @@ public:
         sizePolicy1.setHeightForWidth(leadLabel->sizePolicy().hasHeightForWidth());
         leadLabel->setSizePolicy(sizePolicy1);
         QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
+        font.setFamilies({QString::fromUtf8("Arial")});
         font.setPointSize(26);
         font.setBold(true);
         leadLabel->setFont(font);
@@ -126,7 +126,7 @@ public:
         sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy2);
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
+        font1.setFamilies({QString::fromUtf8("Arial")});
         font1.setPointSize(16);
         font1.setBold(true);
         label->setFont(font1);
@@ -156,7 +156,7 @@ public:
         nameEdit = new QTextEdit(gridWidget);
         nameEdit->setObjectName(QString::fromUtf8("nameEdit"));
         QFont font2;
-        font2.setFamily(QString::fromUtf8("Arial"));
+        font2.setFamilies({QString::fromUtf8("Arial")});
         font2.setPointSize(14);
         font2.setBold(true);
         nameEdit->setFont(font2);
@@ -176,6 +176,7 @@ public:
         scoreEdit->setSizePolicy(sizePolicy3);
         scoreEdit->setFont(font2);
         scoreEdit->setStyleSheet(QString::fromUtf8("color:white;"));
+        scoreEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scoreEdit->setUndoRedoEnabled(false);
         scoreEdit->setReadOnly(true);
 

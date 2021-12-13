@@ -241,6 +241,9 @@ p, li { white-space: pre-wrap; }
            <property name="styleSheet">
             <string notr="true">color:white;</string>
            </property>
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
            <property name="undoRedoEnabled">
             <bool>false</bool>
            </property>
