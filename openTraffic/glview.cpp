@@ -68,6 +68,7 @@ trotuar=new Parser(setPath("/obj/TROTUAR.obj"),setPath("/textures/buildings/Road
 zaparik=new Parser(setPath("/obj/ShcodaCar.obj"),setPath("/textures/CarColor.png"));
 glinka=new Parser(setPath("/obj/Glinka.obj"),setPath("/textures/buildings/glina.png"));
 checkp=new Parser(setPath("/obj/SHORT_CHECKPOINTS.obj"),setPath("/textures/roads/grad.png"));
+//macdak=new Parser(setPath("/obj/MacDak.obj"),setPath("/textures/buildings/MacDak.png"));
 //atb=new Parser(setPath("/obj/ATB1.obj"),setPath("/textures/buildings/ATB.png"));
 //atb2=new Parser(setPath("/obj/ATB2.obj"),setPath("/textures/buildings/ATB.png"));
 //aurora=new Parser(setPath("/obj/Aurora.obj"),setPath("/textures/buildings/Aurora.png"));
@@ -131,7 +132,7 @@ void GLView::paintGL(){
     //draw(papich);
     //draw(cerkov3);
     draw(glinka);
-
+    //draw(macdak);
     /*  draw(ukraine);
     */
 

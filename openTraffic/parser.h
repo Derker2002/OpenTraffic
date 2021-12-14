@@ -45,7 +45,7 @@ private:
     FILE* mylf;
 public:
     Parser(){};
-    Parser(char* name,char* texture_path);
+    Parser(char* name,char* texture_path="none");
     bool IsColored();
     int GetWidth();
     int GetHeight();
