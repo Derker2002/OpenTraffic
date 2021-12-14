@@ -1,19 +1,19 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'questionform.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.0.1)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
 #include <memory>
-#include "../../../OpenTraffic-release/openTraffic/questionform.h"
+#include "../../openTraffic/questionform.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'questionform.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.0.1. It"
+#error "This file was generated using the moc from 6.2.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -43,7 +43,7 @@ QT_MOC_LITERAL(36, 21) // "on_answButton_clicked"
 static const uint qt_meta_data_QuestionForm[] = {
 
  // content:
-       9,       // revision
+      10,       // revision
        0,       // classname
        0,    0, // classinfo
        2,   14, // methods
@@ -54,8 +54,8 @@ static const uint qt_meta_data_QuestionForm[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x08,    0 /* Private */,
-       3,    0,   27,    2, 0x08,    1 /* Private */,
+       1,    0,   26,    2, 0x08,    1 /* Private */,
+       3,    0,   27,    2, 0x08,    2 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -85,7 +85,7 @@ const QMetaObject QuestionForm::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_QuestionForm_t
-
+, QtPrivate::TypeAndForceComplete<QuestionForm, std::true_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 

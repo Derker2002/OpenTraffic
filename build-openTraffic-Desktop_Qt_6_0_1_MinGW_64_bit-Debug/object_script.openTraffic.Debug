@@ -1,5 +1,6 @@
 debug/aboutus.o
 debug/customgraphicsview.o
+debug/exceptions.o
 debug/glview.o
 debug/leaderboard.o
 debug/main.o

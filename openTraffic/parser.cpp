@@ -135,10 +135,11 @@ Parser::Parser(char* name,char* texture_path){
     if(colored) data = stbi_load(texture_path, &width, &height, &cntr, 0);
     try {
         mylf = fopen(name, "r");
+        if(mylf==NULL)throw Exceptions();
         InitParse();
         fclose(mylf);
-    }  catch (...) {
-        qDebug()<<"wrong path way";
+    }  catch (Exceptions &exp) {
+        exp.filenotfound();
     }
 }
 int Parser::GetCenter(){return cntr;}

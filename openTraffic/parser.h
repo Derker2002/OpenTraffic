@@ -9,6 +9,7 @@
 #include <vector>
 #include <cstring>
 #include <QPoint>
+#include <exceptions.h>
 class Parser
 {
 public:
@@ -45,7 +46,7 @@ private:
     FILE* mylf;
 public:
     Parser(){};
-    Parser(char* name,char* texture_path="none");
+    Parser(char* name,char* texture_path);
     bool IsColored();
     int GetWidth();
     int GetHeight();

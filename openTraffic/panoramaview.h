@@ -8,6 +8,7 @@
 #include "QJsonObject"
 #include "QJsonValue"
 #include "QJsonArray"
+#include <exceptions.h>
 
 namespace Ui {
 class PanoramaView;

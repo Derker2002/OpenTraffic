@@ -15,6 +15,7 @@ LIBS += \
 SOURCES += \
     aboutus.cpp \
     customgraphicsview.cpp \
+    exceptions.cpp \
     glview.cpp \
     leaderboard.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 
 HEADERS += \
     customgraphicsview.h \
+    exceptions.h \
     glview.h\
     aboutus.h \
     glview.h \

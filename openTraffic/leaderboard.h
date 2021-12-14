@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <ui_mainwindow.h>
+#include <exceptions.h>
 
 namespace Ui {
 class LeaderBoard;

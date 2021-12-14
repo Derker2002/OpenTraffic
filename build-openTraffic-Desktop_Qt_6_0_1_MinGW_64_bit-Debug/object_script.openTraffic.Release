@@ -1,5 +1,6 @@
 release/aboutus.o
 release/customgraphicsview.o
+release/exceptions.o
 release/glview.o
 release/leaderboard.o
 release/main.o

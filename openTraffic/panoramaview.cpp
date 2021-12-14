@@ -1,5 +1,6 @@
 #include "panoramaview.h"
 #include "ui_panoramaview.h"
+
 QPen clickedPen = QPen(QColor(78,228,78));
 QString jsonSigns;
 
@@ -8,15 +9,33 @@ PanoramaView::PanoramaView(QWidget *parent) :
     ui(new Ui::PanoramaView)
 {
     ui->setupUi(this);
-    QFile file(QDir::currentPath() + "/files/jsonPanorams.json");
-    file.open(QFile::ReadOnly | QFile::Text);
-    jsonSigns = file.readAll();
-    file.close();
+    try{
+        QFile file(QDir::currentPath() + "/files/jsonPanorams.json");
+        file.open(QFile::ReadOnly | QFile::Text);
+        if(!file.isOpen()){
+            throw Exceptions();
+        }
+        jsonSigns = file.readAll();
+        file.close();
 
-    ui->graphicsView->pano_num = 1;
-    pip.load(QDir::currentPath() + "/imgs/panorama_" + QString::number(ui->graphicsView->pano_num) + ".jpg");
-    loadSigns(ui->graphicsView->pano_num);
-    ui->graphicsView->setPanorama->setPixmap(pip);
+        ui->graphicsView->pano_num = 1;
+        if(!QFile::exists(QDir::currentPath() + "/imgs/panorama_" + QString::number(ui->graphicsView->pano_num) + ".jpg")){
+            throw Exceptions(ui->graphicsView->pano_num);
+        }
+        pip.load(QDir::currentPath() + "/imgs/panorama_" + QString::number(ui->graphicsView->pano_num) + ".jpg");
+        loadSigns(ui->graphicsView->pano_num);
+        ui->graphicsView->setPanorama->setPixmap(pip);
+    }
+    catch(Exceptions &exp){
+        if(exp.index!=0){
+            exp.panoramanotfound();
+        }
+        else{
+        exp.filenotfound();
+        }
+        close();
+        parentWidget()->close();
+    }
 }
 
 PanoramaView::~PanoramaView()

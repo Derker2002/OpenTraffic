@@ -58,7 +58,7 @@ private:
     Parser *city,*zaparik,*skybox,*mroads,*cityroof,*trotuar,*signs,*biblio,*glinka,*checkp;
     /*Parser *atb,*atb2, *aurora,*cerkov1,*cerkov2;
     Parser *cerkov3,*papich,*ecotown,,*intour;
-    Parser *macdak,*panorama,*teatr;
+    Parser *macdak,*panorama,*teatr,*macdak;
     Parser *ukraine,*zapor,*zazik,*zhd1;*/
     QTimer *timer;
     QLabel *fps;

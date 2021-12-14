@@ -11,7 +11,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->logo_label->setPixmap(QDir::currentPath() + "/imgs/logo.png");
+    try{
+        if(!QFile::exists(QDir::currentPath() + "/imgs/logo.png")){
+            throw Exceptions();
+        }
+        ui->logo_label->setPixmap(QDir::currentPath() + "/imgs/logo.png");
+    }
+    catch(Exceptions &exp){
+        exp.picturenotfound();
+    }
 }
 
 MainWindow::~MainWindow()
@@ -21,7 +29,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::paintEvent(QPaintEvent *pe){
     QPixmap pixmap;
+    try{
+        if(!QFile::exists(QDir::currentPath() + "/imgs/main_screen.png")){
+            throw Exceptions();
+        }
         pixmap.load(QDir::currentPath() + "/imgs/main_screen.png");
+    }
+    catch(Exceptions &exp){
+        exp.picturenotfound();
+        close();
+    }
         QPainter paint(this);
         int widWidth = ui->centralwidget->width();
         int widHeight = ui->centralwidget->height();

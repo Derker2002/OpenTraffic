@@ -6,6 +6,7 @@
 #include "aboutus.h"
 #include "optionsf.h"
 #include "glview.h"
+#include <exceptions.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

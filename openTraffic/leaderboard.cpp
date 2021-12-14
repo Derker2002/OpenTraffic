@@ -16,8 +16,13 @@ LeaderBoard::LeaderBoard(QWidget *parent) :
     ui->scoreEdit->setAlignment(Qt::AlignHCenter);
     QString set_str;
     QFile leaderBoard(QDir::currentPath() + "/files/scores.scor");
-    if (!leaderBoard.open(QFile::ReadOnly | QFile::Text))
-        QMessageBox::critical(0,"Помилка","Не вдалося відкрити файл!");
+    try{
+        if (!leaderBoard.open(QFile::ReadOnly | QFile::Text))
+            throw Exceptions();
+
+    } catch(Exceptions &exp){
+        exp.filenotfound();
+    }
     QTextStream stream(&leaderBoard);
     while (!stream.atEnd()){
         set_str.append(stream.readLine());
