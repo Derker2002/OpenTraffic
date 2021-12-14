@@ -29,7 +29,7 @@ private:
     bool panorams_cheked[11];
     std::string curpath;
     bool show_q=true;
-    bool carsim=true;
+    bool carsim=false;
     bool showfps,helper,mmove;
     bool end=false;
     float fspeed=0,sspeed=0;

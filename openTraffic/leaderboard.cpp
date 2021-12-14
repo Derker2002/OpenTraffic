@@ -24,6 +24,23 @@ LeaderBoard::LeaderBoard(QWidget *parent) :
     }
     leaderBoard.close();
     QStringList leaders=set_str.split(";");
+
+
+    QString temp;
+    int bindex;
+            for (int i = 0; i < leaders.length(); i++)
+            {
+                bindex=i;
+                while (bindex-1>=0 && leaders[bindex]!="" && leaders[bindex].split('\t')[1].toInt() > leaders[bindex-1].split('\t')[1].toInt() )
+                {
+                   temp=leaders[bindex];
+                   leaders[bindex]=leaders[bindex-1];
+                   leaders[bindex-1]=temp;
+                   bindex--;
+                }
+            }
+
+
     for(int i=0;i<leaders.length();i++){
         if (leaders[i] != ""){
             ui->nameEdit->append(leaders[i].split('\t')[0]+"\n");

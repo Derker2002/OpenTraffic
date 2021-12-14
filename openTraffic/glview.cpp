@@ -259,8 +259,8 @@ void GLView::keyPressEvent(QKeyEvent *e)
     if(!carsim){
         if(e->nativeScanCode() == 17 && fspeed<maxspeed){fspeed+=0.2;}
         if(e->nativeScanCode() == 31){if(fspeed>-2)fspeed-=0.2;}
-        if(e->nativeScanCode() == 16){yPos-=10;}
-        if(e->nativeScanCode() == 18){yPos+=10;}
+        if(e->nativeScanCode() == 16){yPos-=1;}
+        if(e->nativeScanCode() == 18){yPos+=1;}
         if(e->nativeScanCode() == 30){if(fspeed<4)sspeed+=0.2;}//!!!!!!!!!!!!!! добавить таймер + отображение пофиксить
         if(e->nativeScanCode() == 32){if(fspeed>-4)fspeed-=0.2;}
     }
