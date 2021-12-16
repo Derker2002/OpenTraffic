@@ -39,6 +39,9 @@ distance=L[1].split("=")[1].toInt()*100;
 helper=L[2].split("=")[1].toInt();
 maxspeed= L[3].split("=")[1].toInt();
 mmove = L[4].split("=")[1].toInt();
+carsim=L[5].split("=")[1].toInt();
+carsim=!carsim;
+
 if(showfps)fps->show();
 
 QFile file(QDir::currentPath() + "/files/PDRQUESTIONS.pdr");
@@ -91,6 +94,15 @@ yPos=-66;
 zPos=11328.8;
 glTranslatef(xPos,yPos,zPos);
 if(carsim)xRot=35;
+update();
+if(helper){
+
+    hf = new HelperForm(this);
+    Qt::WindowFlags flags = hf->windowFlags();
+    hf->setAttribute(Qt::WA_TranslucentBackground);
+    hf->setWindowFlags(flags | Qt::Dialog | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint  | Qt::FramelessWindowHint);
+    hf->show();
+    }
 }
 
 void GLView::resizeGL(int w, int h){
@@ -347,7 +359,7 @@ void GLView::tTick()
         else {fspeed+=0.05;sspeed+=0.1;}
 
     }else
-        if(fspeed==0 && show_q)
+        if(fspeed==0 && show_q && carsim)
     {
         if(xPos < 10140.5 && zPos < 11338.4 && xPos>10075.2  && zPos>11309.1 && !panorams_cheked[0]){
             qDebug()<<"Panorama1";
@@ -407,6 +419,7 @@ void GLView::tTick()
 
             qDebug()<<xPos<<" "<<zPos;
         show_q=false;
+
     }
     for(int i=0;i<11;i++)
         if(!panorams_cheked[i])end=false;

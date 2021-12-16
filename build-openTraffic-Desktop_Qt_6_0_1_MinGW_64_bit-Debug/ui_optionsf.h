@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'optionsf.ui'
 **
-** Created by: Qt User Interface Compiler version 6.0.1
+** Created by: Qt User Interface Compiler version 6.1.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -30,20 +30,22 @@ public:
     QPushButton *saveButton;
     QWidget *gridWidget;
     QGridLayout *LeadersView;
+    QCheckBox *fpsCheckBox;
+    QLabel *renderDLabel;
+    QLabel *keyboardMove;
+    QCheckBox *helperCheckBox;
+    QLabel *maxSpeedSliderValue;
+    QSlider *renderDSlider;
+    QSpacerItem *upSpacer;
+    QLabel *fpsLabel;
+    QCheckBox *keyboardMoveCB;
     QLabel *renderDSliderValue;
     QSlider *maxSpeedSlider;
-    QCheckBox *keyboardMoveCB;
-    QLabel *maxSpeedSliderValue;
     QLabel *maxSpeedLabel;
-    QSpacerItem *upSpacer;
-    QCheckBox *helperCheckBox;
-    QCheckBox *fpsCheckBox;
     QSpacerItem *downSpacer;
-    QLabel *fpsLabel;
     QLabel *helperLabel;
-    QLabel *keyboardMove;
-    QSlider *renderDSlider;
-    QLabel *renderDLabel;
+    QCheckBox *ghost;
+    QLabel *ghostLabel;
     QPushButton *pushButton;
     QLabel *optLabel;
 
@@ -105,11 +107,97 @@ public:
 "background-color: rgb(24, 54, 58);"));
         LeadersView = new QGridLayout(gridWidget);
         LeadersView->setObjectName(QString::fromUtf8("LeadersView"));
+        fpsCheckBox = new QCheckBox(gridWidget);
+        fpsCheckBox->setObjectName(QString::fromUtf8("fpsCheckBox"));
+        fpsCheckBox->setTristate(false);
+
+        LeadersView->addWidget(fpsCheckBox, 2, 1, 1, 1);
+
+        renderDLabel = new QLabel(gridWidget);
+        renderDLabel->setObjectName(QString::fromUtf8("renderDLabel"));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Arial")});
+        font.setPointSize(14);
+        renderDLabel->setFont(font);
+        renderDLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
+        renderDLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        LeadersView->addWidget(renderDLabel, 3, 0, 1, 1);
+
+        keyboardMove = new QLabel(gridWidget);
+        keyboardMove->setObjectName(QString::fromUtf8("keyboardMove"));
+        keyboardMove->setFont(font);
+        keyboardMove->setStyleSheet(QString::fromUtf8("color: #fff"));
+        keyboardMove->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        LeadersView->addWidget(keyboardMove, 6, 0, 1, 1);
+
+        helperCheckBox = new QCheckBox(gridWidget);
+        helperCheckBox->setObjectName(QString::fromUtf8("helperCheckBox"));
+        helperCheckBox->setChecked(true);
+
+        LeadersView->addWidget(helperCheckBox, 4, 1, 1, 1);
+
+        maxSpeedSliderValue = new QLabel(gridWidget);
+        maxSpeedSliderValue->setObjectName(QString::fromUtf8("maxSpeedSliderValue"));
+        maxSpeedSliderValue->setFont(font);
+        maxSpeedSliderValue->setStyleSheet(QString::fromUtf8("color: #fff"));
+
+        LeadersView->addWidget(maxSpeedSliderValue, 5, 2, 1, 1);
+
+        renderDSlider = new QSlider(gridWidget);
+        renderDSlider->setObjectName(QString::fromUtf8("renderDSlider"));
+        renderDSlider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal {\n"
+"border: 1px solid #bbb;\n"
+"background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.5 rgba(64, 140, 153, 255), stop:1 rgba(49, 108, 117, 255));\n"
+"height: 6px;\n"
+"border-radius: 3px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
+"    stop:0 #eee, stop:1 #ccc);\n"
+"border: 1px solid #777;\n"
+"width: 10px;\n"
+"line-height: 20px; \n"
+"margin-top: -5px; \n"
+"margin-bottom: -5px; \n"
+"border-radius: 5px; \n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
+"    stop:0 #fff, stop:1 #ddd);\n"
+"border: 1px solid #444;\n"
+"border-radius: 4px;\n"
+"}"));
+        renderDSlider->setOrientation(Qt::Horizontal);
+        renderDSlider->setInvertedAppearance(false);
+        renderDSlider->setInvertedControls(false);
+        renderDSlider->setTickPosition(QSlider::NoTicks);
+
+        LeadersView->addWidget(renderDSlider, 3, 1, 1, 1);
+
+        upSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        LeadersView->addItem(upSpacer, 8, 0, 1, 1);
+
+        fpsLabel = new QLabel(gridWidget);
+        fpsLabel->setObjectName(QString::fromUtf8("fpsLabel"));
+        fpsLabel->setFont(font);
+        fpsLabel->setLayoutDirection(Qt::LeftToRight);
+        fpsLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
+        fpsLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        LeadersView->addWidget(fpsLabel, 2, 0, 1, 1);
+
+        keyboardMoveCB = new QCheckBox(gridWidget);
+        keyboardMoveCB->setObjectName(QString::fromUtf8("keyboardMoveCB"));
+
+        LeadersView->addWidget(keyboardMoveCB, 6, 1, 1, 1);
+
         renderDSliderValue = new QLabel(gridWidget);
         renderDSliderValue->setObjectName(QString::fromUtf8("renderDSliderValue"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Arial"));
-        font.setPointSize(14);
         renderDSliderValue->setFont(font);
         renderDSliderValue->setStyleSheet(QString::fromUtf8("color: #fff"));
 
@@ -145,18 +233,6 @@ public:
 
         LeadersView->addWidget(maxSpeedSlider, 5, 1, 1, 1);
 
-        keyboardMoveCB = new QCheckBox(gridWidget);
-        keyboardMoveCB->setObjectName(QString::fromUtf8("keyboardMoveCB"));
-
-        LeadersView->addWidget(keyboardMoveCB, 6, 1, 1, 1);
-
-        maxSpeedSliderValue = new QLabel(gridWidget);
-        maxSpeedSliderValue->setObjectName(QString::fromUtf8("maxSpeedSliderValue"));
-        maxSpeedSliderValue->setFont(font);
-        maxSpeedSliderValue->setStyleSheet(QString::fromUtf8("color: #fff"));
-
-        LeadersView->addWidget(maxSpeedSliderValue, 5, 2, 1, 1);
-
         maxSpeedLabel = new QLabel(gridWidget);
         maxSpeedLabel->setObjectName(QString::fromUtf8("maxSpeedLabel"));
         maxSpeedLabel->setFont(font);
@@ -165,34 +241,9 @@ public:
 
         LeadersView->addWidget(maxSpeedLabel, 5, 0, 1, 1);
 
-        upSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        LeadersView->addItem(upSpacer, 7, 0, 1, 1);
-
-        helperCheckBox = new QCheckBox(gridWidget);
-        helperCheckBox->setObjectName(QString::fromUtf8("helperCheckBox"));
-        helperCheckBox->setChecked(true);
-
-        LeadersView->addWidget(helperCheckBox, 4, 1, 1, 1);
-
-        fpsCheckBox = new QCheckBox(gridWidget);
-        fpsCheckBox->setObjectName(QString::fromUtf8("fpsCheckBox"));
-        fpsCheckBox->setTristate(false);
-
-        LeadersView->addWidget(fpsCheckBox, 2, 1, 1, 1);
-
         downSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         LeadersView->addItem(downSpacer, 1, 0, 1, 1);
-
-        fpsLabel = new QLabel(gridWidget);
-        fpsLabel->setObjectName(QString::fromUtf8("fpsLabel"));
-        fpsLabel->setFont(font);
-        fpsLabel->setLayoutDirection(Qt::LeftToRight);
-        fpsLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
-        fpsLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        LeadersView->addWidget(fpsLabel, 2, 0, 1, 1);
 
         helperLabel = new QLabel(gridWidget);
         helperLabel->setObjectName(QString::fromUtf8("helperLabel"));
@@ -202,54 +253,22 @@ public:
 
         LeadersView->addWidget(helperLabel, 4, 0, 1, 1);
 
-        keyboardMove = new QLabel(gridWidget);
-        keyboardMove->setObjectName(QString::fromUtf8("keyboardMove"));
-        keyboardMove->setFont(font);
-        keyboardMove->setStyleSheet(QString::fromUtf8("color: #fff"));
-        keyboardMove->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        ghost = new QCheckBox(gridWidget);
+        ghost->setObjectName(QString::fromUtf8("ghost"));
 
-        LeadersView->addWidget(keyboardMove, 6, 0, 1, 1);
+        LeadersView->addWidget(ghost, 7, 1, 1, 1);
 
-        renderDSlider = new QSlider(gridWidget);
-        renderDSlider->setObjectName(QString::fromUtf8("renderDSlider"));
-        renderDSlider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal {\n"
-"border: 1px solid #bbb;\n"
-"background: qlineargradient(spread:pad, x1:0.5, y1:0, x2:0.5, y2:1, stop:0 rgba(49, 108, 117, 255), stop:0.5 rgba(64, 140, 153, 255), stop:1 rgba(49, 108, 117, 255));\n"
-"height: 6px;\n"
-"border-radius: 3px;\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
-"    stop:0 #eee, stop:1 #ccc);\n"
-"border: 1px solid #777;\n"
-"width: 10px;\n"
-"line-height: 20px; \n"
-"margin-top: -5px; \n"
-"margin-bottom: -5px; \n"
-"border-radius: 5px; \n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"background: qlineargradient(x1:0, y1:0, x2:1, y2:1,\n"
-"    stop:0 #fff, stop:1 #ddd);\n"
-"border: 1px solid #444;\n"
-"border-radius: 4px;\n"
-"}"));
-        renderDSlider->setOrientation(Qt::Horizontal);
-        renderDSlider->setInvertedAppearance(false);
-        renderDSlider->setInvertedControls(false);
-        renderDSlider->setTickPosition(QSlider::NoTicks);
+        ghostLabel = new QLabel(gridWidget);
+        ghostLabel->setObjectName(QString::fromUtf8("ghostLabel"));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Arial")});
+        font1.setPointSize(14);
+        font1.setBold(false);
+        ghostLabel->setFont(font1);
+        ghostLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
+        ghostLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
-        LeadersView->addWidget(renderDSlider, 3, 1, 1, 1);
-
-        renderDLabel = new QLabel(gridWidget);
-        renderDLabel->setObjectName(QString::fromUtf8("renderDLabel"));
-        renderDLabel->setFont(font);
-        renderDLabel->setStyleSheet(QString::fromUtf8("color: #fff"));
-        renderDLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        LeadersView->addWidget(renderDLabel, 3, 0, 1, 1);
+        LeadersView->addWidget(ghostLabel, 7, 0, 1, 1);
 
 
         gridLayout->addWidget(gridWidget, 2, 0, 1, 2);
@@ -290,12 +309,12 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(optLabel->sizePolicy().hasHeightForWidth());
         optLabel->setSizePolicy(sizePolicy1);
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial"));
-        font1.setPointSize(26);
-        font1.setBold(true);
-        font1.setKerning(true);
-        optLabel->setFont(font1);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Arial")});
+        font2.setPointSize(26);
+        font2.setBold(true);
+        font2.setKerning(true);
+        optLabel->setFont(font2);
         optLabel->setStyleSheet(QString::fromUtf8("color: #fff;"));
         optLabel->setScaledContents(false);
         optLabel->setAlignment(Qt::AlignCenter);
@@ -315,16 +334,18 @@ public:
     {
         OptionsF->setWindowTitle(QCoreApplication::translate("OptionsF", "Form", nullptr));
         saveButton->setText(QCoreApplication::translate("OptionsF", "\320\227 \320\221 \320\225 \320\240 \320\225 \320\223 \320\242 \320\230", nullptr));
-        renderDSliderValue->setText(QCoreApplication::translate("OptionsF", "0", nullptr));
-        keyboardMoveCB->setText(QString());
-        maxSpeedSliderValue->setText(QCoreApplication::translate("OptionsF", "0", nullptr));
-        maxSpeedLabel->setText(QCoreApplication::translate("OptionsF", "\320\234\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260 \321\210\320\262\320\270\320\264\320\272\321\226\321\201\321\202\321\214", nullptr));
-        helperCheckBox->setText(QString());
         fpsCheckBox->setText(QString());
-        fpsLabel->setText(QCoreApplication::translate("OptionsF", "\320\237\320\276\320\272\320\260\320\267\321\203\320\262\320\260\321\202\320\270 FPS", nullptr));
-        helperLabel->setText(QCoreApplication::translate("OptionsF", "\320\237\320\276\320\274\321\226\321\207\320\275\320\270\320\272", nullptr));
-        keyboardMove->setText(QCoreApplication::translate("OptionsF", "\320\243\320\277\321\200\320\260\320\262\320\273\321\226\320\275\320\275\321\217 \320\272\320\273\320\260\320\262\321\226\320\260\321\202\321\203\321\200\320\276\321\216 (BETA)", nullptr));
         renderDLabel->setText(QCoreApplication::translate("OptionsF", "\320\224\320\260\320\273\321\214\320\275\321\226\321\201\321\202\321\214 \320\277\321\200\320\276\320\274\320\260\320\273\321\214\320\276\320\262\321\203\320\262\320\260\320\275\320\275\321\217", nullptr));
+        keyboardMove->setText(QCoreApplication::translate("OptionsF", "\320\243\320\277\321\200\320\260\320\262\320\273\321\226\320\275\320\275\321\217 \320\272\320\273\320\260\320\262\321\226\320\260\321\202\321\203\321\200\320\276\321\216 (BETA)", nullptr));
+        helperCheckBox->setText(QString());
+        maxSpeedSliderValue->setText(QCoreApplication::translate("OptionsF", "0", nullptr));
+        fpsLabel->setText(QCoreApplication::translate("OptionsF", "\320\237\320\276\320\272\320\260\320\267\321\203\320\262\320\260\321\202\320\270 FPS", nullptr));
+        keyboardMoveCB->setText(QString());
+        renderDSliderValue->setText(QCoreApplication::translate("OptionsF", "0", nullptr));
+        maxSpeedLabel->setText(QCoreApplication::translate("OptionsF", "\320\234\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\260 \321\210\320\262\320\270\320\264\320\272\321\226\321\201\321\202\321\214", nullptr));
+        helperLabel->setText(QCoreApplication::translate("OptionsF", "\320\237\320\276\320\274\321\226\321\207\320\275\320\270\320\272", nullptr));
+        ghost->setText(QString());
+        ghostLabel->setText(QCoreApplication::translate("OptionsF", "\320\240\320\265\320\266\320\270\320\274 Ghost", nullptr));
         pushButton->setText(QCoreApplication::translate("OptionsF", "\342\206\220  \320\237 \320\236 \320\222 \320\225 \320\240 \320\235 \320\243 \320\242 \320\230 \320\241 \320\257", nullptr));
         optLabel->setText(QCoreApplication::translate("OptionsF", "\320\235 \320\220 \320\233 \320\220 \320\250 \320\242 \320\243 \320\222 \320\220 \320\235 \320\235 \320\257", nullptr));
     } // retranslateUi

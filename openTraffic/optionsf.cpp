@@ -26,6 +26,7 @@ OptionsF::OptionsF(QWidget *parent) :
     ui->maxSpeedSlider->setValue(L[3].split("=")[1].toInt());
     ui->maxSpeedSliderValue->setText(QString::number(ui->maxSpeedSlider->value()));
     ui->keyboardMoveCB->setChecked(L[4].split("=")[1].toInt());
+    ui->ghost->setChecked(L[5].split("=")[1].toInt());
 }
 
 OptionsF::~OptionsF()
@@ -59,7 +60,8 @@ void OptionsF::on_saveButton_clicked()
     out << "renderdistance=" + QString::number(ui->renderDSlider->value()) + ";\n";
     out << "helper=" + QString::number(ui->helperCheckBox->isChecked()) + ";\n";
     out << "maxspeed=" + QString::number(ui->maxSpeedSlider->value()) + ";\n";
-    out << "keyboardmove=" + QString::number(ui->keyboardMoveCB->isChecked()) + ";";
+    out << "keyboardmove=" + QString::number(ui->keyboardMoveCB->isChecked()) + ";\n";
+    out << "ghost="+QString::number(ui->ghost->isChecked())+";";
     settingsF.close();
     QMessageBox::information(0,"Інформація","Зміни збережено!");
 }

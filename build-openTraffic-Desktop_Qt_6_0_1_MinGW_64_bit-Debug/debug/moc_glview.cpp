@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'glview.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.1.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -15,7 +15,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'glview.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.2.2. It"
+#error "This file was generated using the moc from 6.1.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -43,7 +43,7 @@ QT_MOC_LITERAL(13, 0) // ""
 static const uint qt_meta_data_GLView[] = {
 
  // content:
-      10,       // revision
+       9,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -54,7 +54,7 @@ static const uint qt_meta_data_GLView[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    1 /* Public */,
+       1,    0,   20,    2, 0x0a,    0 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -82,7 +82,7 @@ const QMetaObject GLView::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_GLView_t
-, QtPrivate::TypeAndForceComplete<GLView, std::true_type>
+
 , QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 

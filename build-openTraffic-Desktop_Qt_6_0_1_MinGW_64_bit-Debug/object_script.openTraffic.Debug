@@ -2,6 +2,7 @@ debug/aboutus.o
 debug/customgraphicsview.o
 debug/exceptions.o
 debug/glview.o
+debug/helperform.o
 debug/leaderboard.o
 debug/main.o
 debug/mainwindow.o
@@ -13,6 +14,7 @@ debug/questionform.o
 debug/saveform.o
 debug/moc_glview.o
 debug/moc_aboutus.o
+debug/moc_helperform.o
 debug/moc_leaderboard.o
 debug/moc_mainwindow.o
 debug/moc_optionsf.o

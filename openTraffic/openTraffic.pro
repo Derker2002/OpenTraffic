@@ -17,6 +17,7 @@ SOURCES += \
     customgraphicsview.cpp \
     exceptions.cpp \
     glview.cpp \
+    helperform.cpp \
     leaderboard.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     glview.h\
     aboutus.h \
     glview.h \
+    helperform.h \
     leaderboard.h \
     mainwindow.h \
     optionsf.h \
@@ -44,6 +46,7 @@ HEADERS += \
 
 FORMS += \
     aboutus.ui \
+    helperform.ui \
     leaderboard.ui \
     mainwindow.ui \
     optionsf.ui \

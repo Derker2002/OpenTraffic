@@ -91,8 +91,10 @@ void MainWindow::on_aboutUsButton_clicked()
 void MainWindow::on_startButton_clicked()
 {
     mg = new GLView();
+    mg->setFocus();
     mg->resize(this->width(),this->height());
     mg->setWindowState(Qt::WindowFullScreen);
     mg->show();
+
     this->close();
 }

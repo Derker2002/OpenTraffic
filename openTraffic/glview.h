@@ -17,6 +17,7 @@
 #include <pauseform.h>
 #include <questionform.h>
 #include <saveform.h>
+#include <helperform.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class GLView; }
 QT_END_NAMESPACE
@@ -63,6 +64,7 @@ private:
     QTimer *timer;
     QLabel *fps;
     pauseform *pf;
+    HelperForm *hf;
     void draw(Parser *obj);
     void moveCamera();
     void moveCar();

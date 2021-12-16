@@ -2,6 +2,7 @@ release/aboutus.o
 release/customgraphicsview.o
 release/exceptions.o
 release/glview.o
+release/helperform.o
 release/leaderboard.o
 release/main.o
 release/mainwindow.o
@@ -13,6 +14,7 @@ release/questionform.o
 release/saveform.o
 release/moc_glview.o
 release/moc_aboutus.o
+release/moc_helperform.o
 release/moc_leaderboard.o
 release/moc_mainwindow.o
 release/moc_optionsf.o
