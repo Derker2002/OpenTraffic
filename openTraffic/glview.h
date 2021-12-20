@@ -26,13 +26,14 @@ class GLView : public QOpenGLWidget
 {
     Q_OBJECT
 private:
-
-    bool panorams_cheked[11];
-    std::string curpath;
     bool show_q=true;
     bool carsim=true;
     bool showfps,helper,mmove;
     bool end=false;
+    bool panorams_cheked[11];
+    float pointpose[9];
+    float texpose[6];
+    float normals[9];
     float fspeed=0,sspeed=0;
     float xRot=0;
     float yRot=90;
@@ -42,33 +43,27 @@ private:
     float zPos=0;
     float ycRot=-90;
     QTime pT,cT;
+    QTimer *timer;
     unsigned int texture;
-    float pointpose[9];
-    float texpose[6];
-    float normals[9];
     QPoint mPos;
-    Ui::GLView *ui;
-    SaveForm *sf;
     QStringList QUEST;
+    std::string curpath;
     std::vector<Parser::point> opd;
     std::vector<Parser::normals> ond;
     std::vector<Parser::textcord> otd;
     std::vector<Parser::surf> ofd;
-    QuestionForm *qf;
     uint indexq;
-    Parser *city,*zaparik,*skybox,*mroads,*cityroof,*trotuar,*signs,*biblio,*glinka,*checkp;
-    /*Parser *atb,*atb2, *aurora,*cerkov1,*cerkov2;
-    Parser *cerkov3,*papich,*ecotown,,*intour;
-    Parser *macdak,*panorama,*teatr,*macdak;
-    Parser *ukraine,*zapor,*zazik,*zhd1;*/
-    QTimer *timer;
+    Parser *city,*zaparik,*skybox,*mroads,*cityroof;
+    Parser *trotuar,*signs,*biblio,*glinka,*checkp;
     QLabel *fps;
     pauseform *pf;
+    QuestionForm *qf;
+    Ui::GLView *ui;
+    SaveForm *sf;
     HelperForm *hf;
     void draw(Parser *obj);
     void moveCamera();
     void moveCar();
-    void setLight();
     char* setPath(char* path);
 public:
     int score=0;

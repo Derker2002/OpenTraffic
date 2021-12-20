@@ -23,17 +23,11 @@ public:
 
 private slots:
     void on_exitButton_clicked();
-
     void on_rulesButton_clicked();
-
     void on_leaderButton_clicked();
-
     void on_aboutUsButton_clicked();
-
     void on_optionsButton_clicked();
-
     void on_startButton_clicked();
-
 private:
     Ui::MainWindow *ui;
     LeaderBoard *lb;

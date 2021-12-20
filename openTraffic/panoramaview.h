@@ -27,9 +27,6 @@ public:
     QRect pgeom;
 private slots:
     void loadSigns(int panoNum);
-
-    void on_nextButton_clicked();
-
     void on_stopButton_clicked();
 
 private:

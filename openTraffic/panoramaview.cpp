@@ -82,15 +82,7 @@ void PanoramaView::loadSigns(int panoNum){
     ui->graphicsView->qTexts = qtxts;
 }
 
-void PanoramaView::on_nextButton_clicked()
-{
-//    ui->graphicsView->pano_num++;
-//    pip.load(QDir::currentPath() + "/imgs/panorama_" + QString::number(ui->graphicsView->pano_num) + ".jpg");
-//    loadSigns(ui->graphicsView->pano_num);
-//    ui->graphicsView->setPanorama->setPixmap(pip);
-//    ui->graphicsView->horizontalScrollBar()->setValue(pip.width() / 2.3);
-//    ui->graphicsView->verticalScrollBar()->setValue(pip.height() / 2.3);
-}
+
 
 void PanoramaView::loadingPanorama(uint panon){
     ui->graphicsView->pano_num = panon;

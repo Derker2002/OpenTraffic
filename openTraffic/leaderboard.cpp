@@ -67,7 +67,4 @@ void LeaderBoard::on_pushButton_clicked()
     wui->centralwidget->setVisible(1);
 }
 
-void LeaderBoard::scroll()
-{
 
-}

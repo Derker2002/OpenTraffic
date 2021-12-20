@@ -19,11 +19,8 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-
     void on_renderDSlider_valueChanged(int value);
-
     void on_maxSpeedSlider_valueChanged(int value);
-
     void on_saveButton_clicked();
 
 private:

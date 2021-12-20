@@ -40,7 +40,6 @@ private:
     textcord tbuff;
     normals nbuff;
     surf sbuff;
-    float fbuff;
     char buff[80];
     void InitParse();
     FILE* mylf;
